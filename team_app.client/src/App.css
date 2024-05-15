@@ -1,0 +1,32 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+.app {
+    background: white;
+    min-height: 100vh;
+}
+
+.sticky {
+    position: sticky;
+    inset: 0 auto auto 0;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+    column-gap: 0.5vw;
+}
+
+.grid {
+    display: grid;
+    align-content: flex-start;
+    column-gap: 0.5vw;
+    row-gap: 0.5vh;
+}
+
+img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}

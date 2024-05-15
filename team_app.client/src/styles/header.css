@@ -1,0 +1,27 @@
+.header {
+    padding: 0 2vw;
+    width: 100%;
+    justify-content: space-between;
+    color: darkslategray;
+    background-color: rgb(247, 247, 247);
+    box-shadow: 0 5px 5px rgb(230, 230, 230);
+    z-index: 3;
+}
+
+.header h1 {
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.header-list {
+    margin: 0 0 0 auto;
+}
+
+.header-list button {
+    padding: 1vh 1vw;
+    color: darkslategray;
+    background-color: transparent;
+}
+
+.header-list button.active {
+    border-bottom: 5px solid;
+}

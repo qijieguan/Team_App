@@ -1,0 +1,10 @@
+{
+"SpaProxyServer": {
+"ServerUrl": "https://localhost:5173",
+"RedirectUrl": "",
+"LaunchCommand": "npm run dev",
+"WorkingDirectory": "C:\\Users\\qijie\\Desktop\\Projects\\Team_App\\Team_App.Server\\..\\team_app.client",
+"MaxTimeoutInSeconds": "120",
+"KeepRunning": "false"
+}
+}

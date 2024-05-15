@@ -1,0 +1,96 @@
+
+.intro-section {
+    justify-content: space-between;
+    height: 80vh;
+}
+
+.intro-content {
+    margin: 0 auto;
+    padding: 5vh 0;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 40%;
+}
+
+.intro-content h1 {
+    font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.intro-content p {
+    width: 80%;
+}
+
+.intro-image {
+    background-image: url("https://images.pexels.com/photos/2739074/pexels-photo-2739074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-size: cover;
+    height: 95%;
+    width: 50%;
+    box-shadow: inset 10px -10px 10px white, inset 0 10px 10px white;
+}
+
+.team-section {
+    position: relative;
+    height: 80vh;
+    background-color: darkslategray;
+}
+
+.team-bg {
+    background-image: url("https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    color: white;
+    text-align: center;
+    row-gap: 5vh;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.team-bg h1 {
+    width: 75%;
+}
+
+.team-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto auto;
+    background-color: rgb(0, 0, 0, 0.3);
+    height: 100%;
+    width: 100%;
+}
+
+.team-bg h1 {  
+    position: relative;
+    z-index: 1;
+}
+
+.features-section {
+    padding: 10vh 2vw;
+    grid-template-columns: 20% 20% 20% 20%;
+    justify-content: center;
+    column-gap: 2vw;
+    row-gap: 2vh;
+    height: 70vh;
+    background: rgb(247, 247, 247);
+}
+
+.features-section.intersected {
+    inset: auto auto 0 0 !important;
+}
+
+.feature-li {
+    padding: 2vh 2vw;
+    background-color: rgb(220, 220, 220);
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+
+.feature-li h1 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.feature-li p {
+    font-size: clamp(0.75rem, 1vw, 1rem);
+}
