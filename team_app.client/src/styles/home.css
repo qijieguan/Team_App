@@ -1,7 +1,13 @@
+.home .animate { opacity: 0; }
 
 .intro-section {
     justify-content: space-between;
-    height: 80vh;
+    height: 90vh;
+    width: 100%;
+}
+
+.intro-section .animate.intersected {
+    animation: fadeSlideDown 1s 0.5s forwards;
 }
 
 .intro-content {
@@ -15,25 +21,28 @@
 }
 
 .intro-content h1 {
+    margin-bottom: 2vh;
     font-size: clamp(2rem, 4vw, 4rem);
 }
 
 .intro-content p {
+    font-size: clamp(1.25rem, 1.5vw, 1.5rem);
     width: 80%;
 }
 
 .intro-image {
-    background-image: url("https://images.pexels.com/photos/2739074/pexels-photo-2739074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    background-size: cover;
-    height: 95%;
+    height: 100%;
     width: 50%;
-    box-shadow: inset 10px -10px 10px white, inset 0 10px 10px white;
 }
 
 .team-section {
     position: relative;
     height: 80vh;
     background-color: darkslategray;
+}
+
+.team-section .animate.intersected {
+    animation: fadeSlideDown 1s 0.5s forwards;
 }
 
 .team-bg {
@@ -50,6 +59,7 @@
 
 .team-bg h1 {
     width: 75%;
+    font-size: clamp(2rem, 4vw, 4rem);
 }
 
 .team-bg::after {
@@ -67,17 +77,16 @@
 }
 
 .features-section {
-    padding: 10vh 2vw;
+    padding: 10vh 2vw 20vh 2vw;
     grid-template-columns: 20% 20% 20% 20%;
-    justify-content: center;
     column-gap: 2vw;
     row-gap: 2vh;
-    height: 70vh;
+    min-height: 70vh;
     background: rgb(247, 247, 247);
 }
 
-.features-section.intersected {
-    inset: auto auto 0 0 !important;
+.feature-label {
+    font-size: clamp(2rem, 3.75vw, 3.75rem);
 }
 
 .feature-li {

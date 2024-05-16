@@ -1,23 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import './App.css';
 
 import Header from './components/Header.tsx';
 import Home from './components/Home.tsx';
+import Profiles from './components/Profiles.tsx';
+import Board from './components/Updates.tsx';
+import Updates from './components/Updates.tsx';
+import Footer from './components/Footer.tsx';
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+import allReducers from './reducers/index.tsx';
+import { configureStore } from '@reduxjs/toolkit';
+
+/*
 interface Forecast {
     date: string;
     temperatureC: number;
     temperatureF: number;
     summary: string;
 }
+*/
 
 function App() {
-    const [forecasts, setForecasts] = useState<Forecast[]>();
+    //const [forecasts, setForecasts] = useState<Forecast[]>();
 
     useEffect(() => {
-        populateWeatherData();
+        //populateWeatherData();
     }, []);
 
+    /*
     const contents = forecasts === undefined
         ? <p><em>Loading... Please refresh once the ASP.NET backend has started. See <a href="https://aka.ms/jspsintegrationreact">https://aka.ms/jspsintegrationreact</a> for more details.</em></p>
         : <table className="table table-striped" aria-labelledby="tabelLabel">
@@ -40,12 +53,26 @@ function App() {
                 )}
             </tbody>
         </table>;
+     */
+
+    const store = configureStore({ reducer: allReducers });
 
     return (
-        <div className="app">
-            <Header />
-            <Home />
-        </div>
+        <main className="app">
+
+            <Router>
+                <Header />
+                <Provider store={store}>
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/Team_Profiles" element={<Profiles />} />
+                        <Route path="/Task_Board" element={<Board />} />
+                        <Route path="/Team_Updates" element={<Updates/> } />
+                    </Routes>
+                </Provider>
+                <Footer />
+            </Router>
+        </main>
     );
 
     /*
@@ -54,11 +81,13 @@ function App() {
             {contents}
     */
 
+   /*
     async function populateWeatherData() {
         const response = await fetch('weatherforecast');
         const data = await response.json();
         setForecasts(data);
     }
+    */
 }
 
 export default App;

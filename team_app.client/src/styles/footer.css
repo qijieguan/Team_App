@@ -1,0 +1,26 @@
+.footer {
+    padding: 0 2vw;
+    min-height: 20vh;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    color: darkslategray;
+    background-color: darkorange;
+}
+
+.footer-intro {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-intro > span:nth-child(2) {
+    font-size: clamp(0.75rem, 0.875vw, 0.875rem);
+}
+
+.footer-intro > span:nth-child(3) {
+    font-size: clamp(0.75rem, 0.875vw, 0.875rem);
+    font-weight: 500;
+}
+
+.footer-icons .icon {
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+}

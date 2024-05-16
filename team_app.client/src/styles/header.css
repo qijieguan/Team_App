@@ -1,27 +1,26 @@
 .header {
-    padding: 0 2vw;
+    padding: 0 2vw 0 2vw;
     width: 100%;
-    justify-content: space-between;
-    color: darkslategray;
+    flex-direction: column;
+    align-items: flex-start;
+    color: darkorange;
     background-color: rgb(247, 247, 247);
-    box-shadow: 0 5px 5px rgb(230, 230, 230);
+    box-shadow: 0 5px 2px rgb(240, 240, 240);
     z-index: 3;
 }
 
 .header h1 {
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
-}
-
-.header-list {
-    margin: 0 0 0 auto;
+    font-size: clamp(1.5rem, 2.75vw, 2.75rem);
 }
 
 .header-list button {
     padding: 1vh 1vw;
-    color: darkslategray;
+    color: grey;
     background-color: transparent;
 }
 
-.header-list button.active {
+.header-li:hover { opacity: 0.4; }
+
+.header-li.active {
     border-bottom: 5px solid;
 }

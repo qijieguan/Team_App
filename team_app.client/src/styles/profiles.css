@@ -1,0 +1,47 @@
+.profiles-section {
+    grid-template-columns: 22% 22% 22% 22%;
+    row-gap: 5vh;
+    padding: 0 0 10vh 0;
+}
+
+.profiles-label {
+    grid-column: 1 / -1;
+    justify-content: center;
+    column-gap: 1.5vw;
+    font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.profiles-label > div > span { color: darkorange; }
+
+.profiles-label .icon-wrapper {
+    transform: translateY(10%);
+}
+
+.profiles-label .icon {
+    color: darkorange;
+    animation: rotateLoop 2s infinite;
+}
+
+.profile { flex-direction: column; text-align: center; }
+
+.profile-img {
+    height: 45vh;
+    border-radius: 1rem;
+}
+
+.profile-name {
+    margin: 2vh 0 0 0;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.profile-role {
+    margin: 2vh 0 0 0;
+    font-size: clamp(1rem, 1.75vw, 1.75rem);
+    color: rgb(75, 75, 75);
+}
+
+.profile-bio {
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    color: rgb(100, 100, 100);
+    width: 80%;
+}

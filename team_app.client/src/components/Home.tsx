@@ -4,38 +4,68 @@ import { useEffect } from 'react';
 
 const Home = () => {
 
-    useEffect(() => {  });
+    useEffect(() => { CallObserver(); });
+
+    const CallObserver = () => {
+        const options: object = {
+            root: null,
+            rootMargin: '0px 0px 0px 0px',
+            threshold: 0
+        }
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach((entry: IntersectionObserverEntry) => {
+                if (entry.isIntersecting) {
+                    entry.target?.classList.add('intersected');
+                }
+                else {
+                    entry.target?.classList.remove('intersected');
+                }
+            })
+        }, options);
+
+        const allTargets = document.querySelectorAll('.animate');
+
+        allTargets.forEach(target => {
+            observer.observe(target)
+        })
+        
+    }
+
+    const url: string = "https://images.pexels.com/photos/2739074/pexels-photo-2739074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
+   
 
     return (
         <div className="home">
+
             <section className="intro-section home-section flex">
                 <div className="intro-content flex">
-                    <h1>Team solutions and productivity</h1>
-                    <p>
+                    <h1 className="animate">Team solutions and productivity</h1>
+                    <p className="animate">
                         Gain control on managing your team workflow and productivity.
                         Keep track of member profiles to grow your team.
                     </p>
                 </div>
 
-                <div className="intro-image"/>
+                <img src={ url } className="intro-image" alt=""/>
             </section>
 
             <section className="team-section ">
                 <div className="team-bg flex">
-                    <h1>
+                    <h1 className="animate">
                         Less Ambiquity in Team Collaboration
                     </h1>
-                    <h1>
+                    <h1 className="animate">
                         Outline daily tasks for Team members
                     </h1>
-                    <h1>
+                    <h1 className="animate">
                          Secure database to manage team records and budget
                     </h1>
                 </div>
             </section>
 
             <section className="features-section home-section grid">
-                <h1>
+                <h1 className="feature-label">
                     System Features
                 </h1>
                 <div className="feature-li">

@@ -21,6 +21,7 @@
 .grid {
     display: grid;
     align-content: flex-start;
+    justify-content: center;
     column-gap: 0.5vw;
     row-gap: 0.5vh;
 }
@@ -29,4 +30,49 @@ img {
     object-fit: cover;
     height: 100%;
     width: 100%;
+}
+
+@keyframes fadeSlideDown {
+    0% {
+        opacity: 0; 
+        transform: translateY(-15%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeSlideUp{
+    0% {
+        opacity: 0;
+        transform: translateY(15%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeSlideRight {
+    0% {
+        opacity: 0;
+        transform: translateX(-15%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes rotateLoop {
+    0% { 
+        transform: rotate(0); 
+
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

@@ -1,0 +1,68 @@
+{
+  "Team": [
+    {
+      "id": 0,
+      "profile_url": "https://upload.wikimedia.org/wikipedia/commons/1/18/Mark_Zuckerberg_F8_2019_Keynote_%2832830578717%29_%28cropped%29.jpg",
+      "name": "Mark Musk",
+      "role": "Data Scientist",
+      "salary": 1,
+      "bio": "I am not a robot. Also, your data are safe with me."
+    },
+    {
+      "id": 2,
+      "profile_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Elon_Musk_Colorado_2022_%28cropped2%29.jpg/640px-Elon_Musk_Colorado_2022_%28cropped2%29.jpg",
+      "name": "Elon Zuckerberg",
+      "role": "QA Engineer",
+      "salary": 1,
+      "bio": "Go get a tesla. Also, I got new brain chips in the future. Free installation provided."
+    },
+    {
+      "id": 3,
+      "profile_url": "https://hips.hearstapps.com/hmg-prod/images/jeff-bezos-attends-the-lord-of-the-rings-the-rings-of-power-news-photo-1684851576.jpg?crop=1.00xw:0.862xh;0,0.0207xh&resize=1200:*",
+      "name": "Jeff Gates",
+      "role": "Finance Director",
+      "salary": 1,
+      "bio": "My employees love me. I strive to give them the best work life balance."
+    },
+    {
+      "id": 4,
+      "profile_url": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Bill_Gates_-_2023_-_P062021-967902_%28cropped%29.jpg",
+      "name": "Bill Bezo",
+      "role": "Human Resource",
+      "salary": 1,
+      "bio": "I know what is best for everyone. I have the power to change humanity forever."
+    },
+    {
+      "id": 5,
+      "profile_url": "https://www.splcenter.org/sites/default/files/kanye_on_infowars-700px.jpg",
+      "name": "Kanye South",
+      "role": "Musician",
+      "salary": 1,
+      "bio": "You ain't got the answer. You ain't got the answer, Sway."
+    },
+    {
+      "id": 6,
+      "profile_url": "https://steamuserimages-a.akamaihd.net/ugc/2014846607484696404/26CF8C5D5745E0F2C5508CE8806503D5FA10C09D/",
+      "name": "Gabe Newell",
+      "role": "Game Director",
+      "salary": 1,
+      "bio": "Gaming should be an affordable hobby in everyone''s daily life. Just get a pc."
+    },
+    {
+      "id": 7,
+      "profile_url": "https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/af5fabb7-3f15-4ee7-bfa0-da2fcdd6c638/width=450/00010-715205668.jpeg",
+      "name": "Lester Green",
+      "role": "Senior Game Developer",
+      "salary": 1,
+      "bio": "Spell red? L S T E R. What color is a carrot? I think it's ahhh... um ...um. If you dig a six feet hole, how deep is that hole? About like 20 feet."
+    },
+    {
+      "id": 8,
+      "profile_url": "https://miro.medium.com/v2/resize:fit:625/1*C-zXmTMHObZWyZBUbdruGg.jpeg",
+      "name": "Harry Barks",
+      "role": "Senior Game Developer",
+      "salary": 1,
+      "bio": "Woof woof. Grrrrrr. Woof is dis bug?"
+    }
+  ]
+}
