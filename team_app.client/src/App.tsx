@@ -14,6 +14,8 @@ import { Provider } from 'react-redux';
 import allReducers from './reducers/index.tsx';
 import { configureStore } from '@reduxjs/toolkit';
 
+import axios from 'axios';
+
 /*
 interface Forecast {
     date: string;
@@ -55,6 +57,28 @@ function App() {
         </table>;
      */
 
+
+    const baseURL = "http://localhost:5074";
+
+    const GetTestData = async () => {
+        await axios.get(baseURL + '/api/testdata/get')
+        .then((response) => { console.log(response.data) });
+    }
+
+
+    GetTestData();
+
+    /*
+    async function populateWeatherData() {
+        const response = await fetch('weatherforecast');
+        const data = await response.json();
+        //setForecasts(data);
+        console.log(data);
+    }
+
+    populateWeatherData();
+    */
+
     const store = configureStore({ reducer: allReducers });
 
     return (
@@ -67,7 +91,7 @@ function App() {
                         <Route path="/" element={<Home />} />
                         <Route path="/Team_Profiles" element={<Profiles />} />
                         <Route path="/Task_Board" element={<Board />} />
-                        <Route path="/Team_Updates" element={<Updates/> } />
+                        <Route path="/Team_Updates" element={<Updates />} />
                     </Routes>
                 </Provider>
                 <Footer />
@@ -80,14 +104,8 @@ function App() {
             <p>This component demonstrates fetching data from the server.</p>
             {contents}
     */
+     
+} 
 
-   /*
-    async function populateWeatherData() {
-        const response = await fetch('weatherforecast');
-        const data = await response.json();
-        setForecasts(data);
-    }
-    */
-}
-
+  
 export default App;
