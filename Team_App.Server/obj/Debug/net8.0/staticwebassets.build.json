@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "16S/s5fhDCwDSNo2NN+X7XANG9P5YG/9MnU4uqLf0sc=",
+  "Hash": "9HdHtI4AqECNHM1OQHh9kSFB9OSKAOf76HtsrbN0jKs=",
   "Source": "Team_App.Server",
   "BasePath": "_content/Team_App.Server",
   "Mode": "Default",
@@ -18,6 +18,14 @@
       "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
     }
   ],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Team_App.Server\\wwwroot",
+      "Source": "Team_App.Server",
+      "ContentRoot": "C:\\Users\\qijie\\Desktop\\Projects\\Team_App\\Team_App.Server\\wwwroot\\",
+      "BasePath": "_content/Team_App.Server",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

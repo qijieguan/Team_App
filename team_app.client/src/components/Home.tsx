@@ -6,6 +6,9 @@ const Home = () => {
 
     useEffect(() => { CallObserver(); });
 
+    const url_1 = "https://cdn.pixabay.com/photo/2024/05/20/16/24/ai-generated-8775742_1280.png";
+    const url_2 = "https://cdn.pixabay.com/photo/2021/11/09/09/05/meeting-6781073_1280.png";
+
     const CallObserver = () => {
         const options: object = {
             root: null,
@@ -32,9 +35,6 @@ const Home = () => {
         
     }
 
-    const url: string = "https://images.pexels.com/photos/2739074/pexels-photo-2739074.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1";
-   
-
     return (
         <div className="home">
 
@@ -45,13 +45,15 @@ const Home = () => {
                         Gain control on managing your team workflow and productivity.
                         Keep track of member profiles to grow your team.
                     </p>
+                    <button className="animate">Try Demo</button>
                 </div>
 
-                <img src={ url } className="intro-image" alt=""/>
+                <img className="intro-image" src={url_1} alt="" />
             </section>
 
-            <section className="team-section ">
-                <div className="team-bg flex">
+            <section className="team-section flex">
+                <img className="team-bg" src={url_2} alt="" />
+                <div className="team-content flex">
                     <h1 className="animate">
                         Less Ambiquity in Team Collaboration
                     </h1>
@@ -59,7 +61,7 @@ const Home = () => {
                         Outline daily tasks for Team members
                     </h1>
                     <h1 className="animate">
-                         Secure database to manage team records and budget
+                        Secure database to manage team records and budget
                     </h1>
                 </div>
             </section>

@@ -3,8 +3,8 @@
     min-height: 20vh;
     justify-content: space-evenly;
     align-items: flex-start;
-    color: darkslategray;
-    background-color: darkorange;
+    color: white;
+    background-color: darkslategray;
 }
 
 .footer-intro {
@@ -23,4 +23,8 @@
 
 .footer-icons .icon {
     font-size: clamp(1rem, 1.25vw, 1.25rem);
+}
+
+.footer-icons .icon:hover {
+    opacity: 0.7;
 }

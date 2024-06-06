@@ -12,8 +12,8 @@ const Footer = () => {
 	return (
 		<footer className="footer flex">
 			<div className="footer-intro flex">
-				<h2>TeamNet</h2>
-				<span>Powered by React-Asp.net Platform</span>
+				<h2>Kanboard</h2>
+				<span>Powered by React and ASP.NET Platforms</span>
 				<span>Make team workflow easy</span>
 			</div>
 

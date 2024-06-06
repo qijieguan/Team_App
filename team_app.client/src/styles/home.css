@@ -4,6 +4,7 @@
     justify-content: space-between;
     height: 90vh;
     width: 100%;
+    background-color: lightyellow;
 }
 
 .intro-section .animate.intersected {
@@ -17,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    width: 40%;
+    width: 50%;
 }
 
 .intro-content h1 {
@@ -26,8 +27,14 @@
 }
 
 .intro-content p {
-    font-size: clamp(1.25rem, 1.5vw, 1.5rem);
-    width: 80%;
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    width: 60%;
+}
+
+.intro-content button {
+    padding: 1vh 1vw;
+    color: white;
+    background-color: darkslategrey;
 }
 
 .intro-image {
@@ -37,8 +44,10 @@
 
 .team-section {
     position: relative;
-    height: 80vh;
-    background-color: darkslategray;
+    justify-content: center;
+    height: 100vh;
+    background-color: darkslategrey;
+    overflow: hidden;
 }
 
 .team-section .animate.intersected {
@@ -46,58 +55,52 @@
 }
 
 .team-bg {
-    background-image: url("https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    background-size: cover;
-    height: 100%;
+    height: 90%;
     width: 100%;
-    color: white;
-    text-align: center;
-    row-gap: 5vh;
-    justify-content: center;
-    flex-direction: column;
+    object-fit: contain;
+    border-radius: 2rem;
 }
 
-.team-bg h1 {
-    width: 75%;
-    font-size: clamp(2rem, 4vw, 4rem);
-}
-
-.team-bg::after {
-    content: '';
+.team-content {
     position: absolute;
-    inset: 0 0 auto auto;
-    background-color: rgb(0, 0, 0, 0.3);
-    height: 100%;
-    width: 100%;
+    inset: 50% 0 auto auto;
+    flex-direction: column;
+    transform: translateY(-50%);
 }
 
-.team-bg h1 {  
-    position: relative;
-    z-index: 1;
+.team-section h1 {
+    padding: 1vh 2vw 1.5vh 2vw;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    width: 50%;
+    background-color: gold;
+    box-shadow: 0 2px 1px black;
+    border-radius: 1rem;
 }
 
 .features-section {
     padding: 10vh 2vw 20vh 2vw;
     grid-template-columns: 20% 20% 20% 20%;
-    column-gap: 2vw;
-    row-gap: 2vh;
+    column-gap: 3vw;
+    row-gap: 5vh;
     min-height: 70vh;
     background: rgb(247, 247, 247);
 }
 
 .feature-label {
     font-size: clamp(2rem, 3.75vw, 3.75rem);
+    color: darkslategrey;
 }
 
 .feature-li {
     padding: 2vh 2vw;
-    background-color: rgb(220, 220, 220);
+    background-color: rgb(240, 240, 240);
     overflow: hidden;
     border-radius: 0.5rem;
 }
 
 .feature-li h1 {
     font-size: clamp(1.5rem, 2vw, 2rem);
+    color: darkslategrey;
 }
 
 .feature-li p {

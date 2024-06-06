@@ -1,26 +1,47 @@
 .header {
     padding: 0 2vw 0 2vw;
+    justify-content: space-between;
     width: 100%;
-    flex-direction: column;
-    align-items: flex-start;
-    color: darkorange;
-    background-color: rgb(247, 247, 247);
-    box-shadow: 0 5px 2px rgb(240, 240, 240);
+    color: darkslategrey;
+    background-color: white;
+    box-shadow: 0 2px 2px rgb(240, 240, 240);
+    border-radius: 0 0 1rem 1rem;
     z-index: 3;
 }
 
-.header h1 {
-    font-size: clamp(1.5rem, 2.75vw, 2.75rem);
+.header-top {
+    margin: 0;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
-.header-list button {
-    padding: 1vh 1vw;
-    color: grey;
+.header-top span {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.header-links button {
+    padding: 0 1vw 1vh 1vw;
+    font-size: clamp(0.75rem, 0.875vw, 0.875rem);
+    color: rgb(180, 180, 180);
     background-color: transparent;
 }
 
 .header-li:hover { opacity: 0.4; }
 
 .header-li.active {
-    border-bottom: 5px solid;
+    border-bottom: 3px solid;
+}
+
+.header-icon {
+    flex-direction: column;
+}
+
+.header-icon .icon {
+    font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.header-icon span {
+    text-transform: uppercase;
+    font-size: clamp(0.75rem, 0.875vw, 0.875rem);
+    letter-spacing: 2px;
 }

@@ -1,7 +1,9 @@
 .profiles-section {
-    grid-template-columns: 22% 22% 22% 22%;
-    row-gap: 5vh;
+    grid-template-columns: 20% 20% 20% 20%;
+    row-gap: 1vh;
+    column-gap: 2vw;
     padding: 0 0 10vh 0;
+    background-color: rgb(247, 247, 247);
 }
 
 .profiles-label {
@@ -11,37 +13,38 @@
     font-size: clamp(2rem, 4vw, 4rem);
 }
 
-.profiles-label > div > span { color: darkorange; }
+.profiles-label > div > span { color: darkslategrey; }
 
 .profiles-label .icon-wrapper {
     transform: translateY(10%);
 }
 
 .profiles-label .icon {
-    color: darkorange;
+    color: darkslategrey;
     animation: rotateLoop 2s infinite;
 }
 
-.profile { flex-direction: column; text-align: center; }
+.profile { margin-bottom: 4vh; flex-direction: column; text-align: center; }
 
 .profile-img {
     height: 45vh;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
 }
 
 .profile-name {
     margin: 2vh 0 0 0;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    color: darkslategrey
 }
 
 .profile-role {
-    margin: 2vh 0 0 0;
-    font-size: clamp(1rem, 1.75vw, 1.75rem);
-    color: rgb(75, 75, 75);
+    margin: 0.5vh 0 0 0;
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    color: slategrey;
 }
 
 .profile-bio {
-    font-size: clamp(1rem, 1.25vw, 1.25rem);
-    color: rgb(100, 100, 100);
+    font-size: clamp(0.75rem, 0.875vw, 0.875rem);
+    color: darkslategrey;
     width: 80%;
 }
