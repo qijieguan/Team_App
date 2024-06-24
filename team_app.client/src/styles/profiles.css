@@ -1,50 +1,115 @@
 .profiles-section {
-    grid-template-columns: 20% 20% 20% 20%;
-    row-gap: 1vh;
+    grid-template-columns: 25% 25% 25% 25%;
     column-gap: 2vw;
     padding: 0 0 10vh 0;
+    min-height: 100vh;
     background-color: rgb(247, 247, 247);
 }
 
-.profiles-label {
+.profile-actions {
+    padding: 5vh 10% 2.5vh 10%;
+    grid-template-columns: 25% 25%;
     grid-column: 1 / -1;
-    justify-content: center;
-    column-gap: 1.5vw;
-    font-size: clamp(2rem, 4vw, 4rem);
+    justify-content: flex-start;
+    column-gap: 3vw;
+    width: 100%;
+    border-bottom: 2px solid rgb(230, 230, 230);
 }
 
-.profiles-label > div > span { color: darkslategrey; }
+.profiles-action {
+    padding: 0 2vw;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    text-transform: uppercase;
+    height: 15vh; 
+    color: deepskyblue; 
+    border-radius: 1rem; 
+}
+
+.profiles-action:hover {
+    color: rgb(247, 247, 247);
+    box-shadow: 0 0 5px grey;
+}
+
+.profiles-action.load {
+    color: white;
+    background-color: deepskyblue;
+}
+
+.profiles-action.clear {
+    color: white;
+    background-color: green;
+}
+
+.profiles-label {
+    margin: 5vh auto;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    column-gap: 1.5vw;
+    text-align: left;
+    font-size: clamp(2rem, 4vw, 4rem);
+    width: 80%;
+}
+
+.profiles-label > div > span {
+    color: deepskyblue;
+}
 
 .profiles-label .icon-wrapper {
     transform: translateY(10%);
 }
 
 .profiles-label .icon {
-    color: darkslategrey;
+    color: deepskyblue;
     animation: rotateLoop 2s infinite;
 }
 
-.profile { margin-bottom: 4vh; flex-direction: column; text-align: center; }
+.profiles-empty {
+    margin: 15vh auto 0 auto;
+    grid-column: -1 / 1;
+    width: 75%;
+    font-size: clamp(1rem, 1.5vw, 1.5rem) !important;
+    text-align: center;
+    line-height: 1.5;
+    opacity: 0.7;
+}
+
+.profile {
+    margin: 0 auto;
+    grid-column: -1 / 1;
+    text-align: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    width: 80%;
+}
+
+.profile:hover { opacity: 0.4; }
+.profile:hover .profile-name { text-decoration: underline; }
 
 .profile-img {
-    height: 45vh;
-    border-radius: 0.5rem;
+    height: 5vh;
+    width: 5vh;
+    border-radius: 0.25rem;
 }
 
 .profile-name {
-    margin: 2vh 0 0 0;
-    font-size: clamp(1.5rem, 2vw, 2rem);
-    color: darkslategrey
+    text-align: left;
+    font-size: clamp(0.875rem, 1.25vw, 1.25rem);
+    color: deepskyblue;
+    min-width: 15%;
 }
 
 .profile-role {
-    margin: 0.5vh 0 0 0;
+    text-align: left;
     font-size: clamp(1rem, 1.25vw, 1.25rem);
-    color: slategrey;
+    color: deepskyblue;
+    opacity: 0.7;
+    min-width: 15%;
 }
 
 .profile-bio {
+    text-align: left;
     font-size: clamp(0.75rem, 0.875vw, 0.875rem);
-    color: darkslategrey;
-    width: 80%;
+    color: grey;
+    width: 55%;
 }
+

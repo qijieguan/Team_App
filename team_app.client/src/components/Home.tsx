@@ -1,5 +1,7 @@
 import '../styles/home.css';
 
+import axios from 'axios';
+
 import { useEffect } from 'react';
 
 const Home = () => {

@@ -107,3 +107,4 @@ C:\Users\qijie\Desktop\Projects\Team_App\Team_App.Server\bin\Debug\net8.0\zh-Han
 C:\Users\qijie\Desktop\Projects\Team_App\Team_App.Server\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\qijie\Desktop\Projects\Team_App\Team_App.Server\obj\Debug\net8.0\Team_App.Server.sourcelink.json
 C:\Users\qijie\Desktop\Projects\Team_App\Team_App.Server\bin\Debug\net8.0\Team_App.Server.staticwebassets.runtime.json
+C:\Users\qijie\Desktop\Projects\Team_App\Team_App.Server\bin\Debug\net8.0\Newtonsoft.Json.dll

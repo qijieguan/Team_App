@@ -14,7 +14,6 @@ import { Provider } from 'react-redux';
 import allReducers from './reducers/index.tsx';
 import { configureStore } from '@reduxjs/toolkit';
 
-import axios from 'axios';
 
 /*
 interface Forecast {
@@ -56,17 +55,6 @@ function App() {
             </tbody>
         </table>;
      */
-
-
-    const baseURL = "http://localhost:5074";
-
-    const GetTestData = async () => {
-        await axios.get(baseURL + '/api/testdata/get')
-        .then((response) => { console.log(response.data) });
-    }
-
-
-    GetTestData();
 
     /*
     async function populateWeatherData() {

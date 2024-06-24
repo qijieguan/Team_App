@@ -8,9 +8,10 @@
     ".NETCoreApp,Version=v8.0": {
       "Team_App.Server/1.0.0": {
         "dependencies": {
-          "Microsoft.AspNetCore.SpaProxy": "8.0.5",
+          "Microsoft.AspNetCore.SpaProxy": "8.0.6",
           "Microsoft.EntityFrameworkCore": "8.0.5",
           "Microsoft.EntityFrameworkCore.Tools": "8.0.5",
+          "Newtonsoft.Json": "13.0.3",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "8.0.4",
           "Swashbuckle.AspNetCore": "6.4.0"
         },
@@ -26,11 +27,11 @@
           }
         }
       },
-      "Microsoft.AspNetCore.SpaProxy/8.0.5": {
+      "Microsoft.AspNetCore.SpaProxy/8.0.6": {
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.SpaProxy.dll": {
-            "assemblyVersion": "8.0.5.0",
-            "fileVersion": "8.0.524.22404"
+            "assemblyVersion": "8.0.6.0",
+            "fileVersion": "8.0.624.26909"
           }
         }
       },
@@ -394,6 +395,14 @@
           }
         }
       },
+      "Newtonsoft.Json/13.0.3": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.3.27908"
+          }
+        }
+      },
       "Npgsql/8.0.3": {
         "dependencies": {
           "Microsoft.Extensions.Logging.Abstractions": "8.0.0"
@@ -564,12 +573,12 @@
       "path": "humanizer.core/2.14.1",
       "hashPath": "humanizer.core.2.14.1.nupkg.sha512"
     },
-    "Microsoft.AspNetCore.SpaProxy/8.0.5": {
+    "Microsoft.AspNetCore.SpaProxy/8.0.6": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-7iEMQelKbwKS5Lk79d/yTOqYSiLPq/wB07Gx4FaFUmF4cv+jtR7vWE55ODaioM+WOHV/ke9HqBCrpfilaaG/Vw==",
-      "path": "microsoft.aspnetcore.spaproxy/8.0.5",
-      "hashPath": "microsoft.aspnetcore.spaproxy.8.0.5.nupkg.sha512"
+      "sha512": "sha512-LBIMKEYxs06TJi/7ekqbfJ8VuoBqC3EORy+mw7Xp0gDIdDGhuaKkeT8BWIzetBbGVix4Tpn3k9GEdJ8Z7E7YOw==",
+      "path": "microsoft.aspnetcore.spaproxy/8.0.6",
+      "hashPath": "microsoft.aspnetcore.spaproxy.8.0.6.nupkg.sha512"
     },
     "Microsoft.Bcl.AsyncInterfaces/6.0.0": {
       "type": "package",
@@ -745,6 +754,13 @@
       "sha512": "sha512-KZYeKBET/2Z0gY1WlTAK7+RHTl7GSbtvTLDXEZZojUdAPqpQNDL6tHv7VUpqfX5VEOh+uRGKaZXkuD253nEOBQ==",
       "path": "mono.texttemplating/2.2.1",
       "hashPath": "mono.texttemplating.2.2.1.nupkg.sha512"
+    },
+    "Newtonsoft.Json/13.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
     },
     "Npgsql/8.0.3": {
       "type": "package",
