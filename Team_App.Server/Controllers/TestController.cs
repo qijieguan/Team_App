@@ -57,7 +57,7 @@ namespace Team_App.Server.Controllers
 
                         //Original bug --- need deserializing
                        
-                        Console.WriteLine(reader[0]);
+                        //Console.WriteLine(reader[0]);
                         return Ok(reader[0]);
                     }
                 }
@@ -75,12 +75,9 @@ namespace Team_App.Server.Controllers
         }
 
         [HttpPost] 
-        public IActionResult InsertMany(JsonElement Data)
+        public IActionResult InsertEntries(JsonElement entries)
         {
             Console.WriteLine("Insert Called!");
-
-            //List<Person>? people = JsonConvert.DeserializeObject<List<Person>>(Data);
-
 
             try
             {
@@ -97,13 +94,12 @@ namespace Team_App.Server.Controllers
                 string sql = "INSERT INTO \"Team\"" + keys + " values " + values;
 
 
-                List<Person>? people = JsonSerializer.Deserialize<List<Person>>(Data);
+                List<Person>? people = JsonSerializer.Deserialize<List<Person>>(entries);
 
                 foreach (var person in people)
                 {
                     using (var command = new NpgsqlCommand(sql, conn))
                     {
-
                         command.Parameters.AddWithValue("Id", person.Id);
                         command.Parameters.AddWithValue("ProfileUrl", person.ProfileUrl);
                         command.Parameters.AddWithValue("Name", person.Name);
@@ -116,24 +112,52 @@ namespace Team_App.Server.Controllers
                     
                 }
 
-                /*
-                for (int i = 0; i < people.Count; ++i)
+                conn.Close();
+                Console.WriteLine("Success close postgreSQL connection.");
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                Console.WriteLine("Success close postgreSQL connection.");
+                Console.WriteLine(ex.Message);
+            }
+            return Ok("Hello World");
+        }
+
+        [HttpPost]
+        public IActionResult InsertEntry(JsonElement entry)
+        {
+            Console.WriteLine("Insert Called!");
+
+            Person ? person = JsonSerializer.Deserialize<Person>(entry);
+
+            Console.WriteLine(person);
+
+            try
+            {
+                conn.Open();
+
+                if (conn.State == System.Data.ConnectionState.Open)
                 {
-                    using (var command = new NpgsqlCommand(sql, conn))
-                    {
-                        command.Parameters.AddWithValue("Id", Data[i].GetProperty("id").GetInt32());
-                        command.Parameters.AddWithValue("ProfileUrl", Data[i].GetProperty("profile_url"));
-                        command.Parameters.AddWithValue("Name", Data[i].GetProperty("name"));
-                        command.Parameters.AddWithValue("Role", Data[i].GetProperty("role"));
-                        command.Parameters.AddWithValue("Salary", Data[i].GetProperty("salary").GetInt32());
-                        command.Parameters.AddWithValue("Bio", Data[i].GetProperty("bio"));
-
-                        command.ExecuteNonQuery();
-                    }
-
+                    Console.WriteLine("Success open postgreSQL connection.");
                 }
-                */
+ 
+                string keys = "(\"Id\", \"ProfileUrl\", \"Name\", \"Role\", \"Salary\", \"Bio\")";
+                string values = "(:Id, :ProfileUrl, :Name, :Role, :Salary, :Bio)";
+                string sql = "INSERT INTO \"Team\"" + keys + " values " + values;
 
+                using (var command = new NpgsqlCommand(sql, conn))
+                {
+                    command.Parameters.AddWithValue("Id", person.Id);
+                    command.Parameters.AddWithValue("ProfileUrl", person.ProfileUrl);
+                    command.Parameters.AddWithValue("Name", person.Name);
+                    command.Parameters.AddWithValue("Role", person.Role);
+                    command.Parameters.AddWithValue("Salary", person.Salary);
+                    command.Parameters.AddWithValue("Bio", person.Bio);
+
+                    command.ExecuteNonQuery();
+                }
+                
                 conn.Close();
                 Console.WriteLine("Success close postgreSQL connection.");
             }

@@ -6,23 +6,25 @@
     background-color: rgb(247, 247, 247);
 }
 
-.profile-actions {
-    padding: 5vh 10% 2.5vh 10%;
-    grid-template-columns: 25% 25%;
+.profiles-actions {
+    padding: 2.5vh 10%;
+    grid-template-columns: 22% 22% 22% 22%;
     grid-column: 1 / -1;
     justify-content: flex-start;
-    column-gap: 3vw;
+    column-gap: 2vw;
     width: 100%;
     border-bottom: 2px solid rgb(230, 230, 230);
 }
 
 .profiles-action {
     padding: 0 2vw;
-    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    justify-content: center;
+    column-gap: 0.75vw;
+    row-gap: 1vh;
     text-transform: uppercase;
-    height: 15vh; 
-    color: deepskyblue; 
-    border-radius: 1rem; 
+    height: 15vh;
+    color: white;
+    border-radius: 1rem;
 }
 
 .profiles-action:hover {
@@ -30,14 +32,63 @@
     box-shadow: 0 0 5px grey;
 }
 
+.profiles-action .icon {
+    font-size: clamp(1rem, 2vw, 2rem);
+}
+
+.profiles-action > span {
+    font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+}
+
 .profiles-action.load {
-    color: white;
     background-color: deepskyblue;
+}
+
+.profiles-action.default {
+    background-color: orange;
+}
+
+.profiles-action.custom {
+    background-color: tomato;
 }
 
 .profiles-action.clear {
     color: white;
     background-color: green;
+}
+
+.profile-create {
+    margin: 0 auto 5vh auto;
+    padding: 1vh 1vw;
+    grid-column: 1 / -1;
+    width: 80%;
+    background-color: rgb(240, 240, 240);
+    border-radius: 0.5rem;
+}
+
+.profile-create > input {
+    text-indent: 0.5vw;
+    font-weight: 700;
+    height: 5vh;
+    color: deepskyblue;
+    border-radius: 0.5rem;
+}
+
+.profile-create > input::placeholder {
+    font-weight: 700;
+    color: deepskyblue;
+}
+
+.profile-create > input:focus {
+    outline: 2px solid deepskyblue;
+}
+
+.profile-create button {
+    padding: 1.5vh 2vw;
+    text-transform: uppercase;
+    color: white;
+    background-color: deepskyblue;
+    box-shadow: 0 0 1px;
 }
 
 .profiles-label {
@@ -67,11 +118,35 @@
     margin: 15vh auto 0 auto;
     grid-column: -1 / 1;
     width: 75%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 100;
     font-size: clamp(1rem, 1.5vw, 1.5rem) !important;
     text-align: center;
+    color: rgb(200, 200, 200);
     line-height: 1.5;
     opacity: 0.7;
 }
+
+.list-actions {
+    margin: 10vh auto 5vh auto;
+    grid-column: -1 / 1;
+    justify-content: center;
+    column-gap: 2vw;
+    width: 80%;
+}
+
+.list-actions button {
+    padding: 1vh 1vw;
+    border-radius: 0.5rem;
+}
+
+.cancel-list, .submit-list {
+    color: white;
+    background-color: deepskyblue;
+}
+
+.cancel-list { opacity: 0.3; }
 
 .profile {
     margin: 0 auto;
