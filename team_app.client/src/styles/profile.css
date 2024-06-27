@@ -1,0 +1,44 @@
+.profile {
+    margin: 0 auto;
+    grid-column: -1 / 1;
+    text-align: center;
+    justify-content: flex-start;
+    border-bottom: 1px solid rgb(230, 230, 230);
+    width: 80%;
+}
+
+.profile:hover {
+    opacity: 0.4;
+}
+
+.profile:hover .profile-name {
+    text-decoration: underline;
+}
+
+.profile-img {
+    height: 5vh;
+    width: 5vh;
+    border-radius: 0.25rem;
+}
+
+.profile-name {
+    text-align: left;
+    font-size: clamp(0.875rem, 1.25vw, 1.25rem);
+    color: deepskyblue;
+    min-width: 15%;
+}
+
+.profile-role {
+    text-align: left;
+    font-size: clamp(1rem, 1.25vw, 1.25rem);
+    color: deepskyblue;
+    opacity: 0.7;
+    min-width: 15%;
+}
+
+.profile-bio {
+    text-align: left;
+    font-size: clamp(0.75rem, 0.875vw, 0.875rem);
+    color: grey;
+    width: 55%;
+}

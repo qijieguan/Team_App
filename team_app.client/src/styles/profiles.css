@@ -115,7 +115,7 @@
 }
 
 .profiles-empty {
-    margin: 15vh auto 0 auto;
+    margin: 5vh auto 0 auto;
     grid-column: -1 / 1;
     width: 75%;
     letter-spacing: 1px;
@@ -131,7 +131,7 @@
 .list-actions {
     margin: 10vh auto 5vh auto;
     grid-column: -1 / 1;
-    justify-content: center;
+    justify-content: flex-end;
     column-gap: 2vw;
     width: 80%;
 }
@@ -157,8 +157,13 @@
     width: 80%;
 }
 
-.profile:hover { opacity: 0.4; }
-.profile:hover .profile-name { text-decoration: underline; }
+    .profile:hover {
+        opacity: 0.4;
+    }
+
+        .profile:hover .profile-name {
+            text-decoration: underline;
+        }
 
 .profile-img {
     height: 5vh;
@@ -187,4 +192,3 @@
     color: grey;
     width: 55%;
 }
-

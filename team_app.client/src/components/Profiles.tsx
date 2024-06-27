@@ -9,6 +9,8 @@ import uuid from 'react-uuid';
 
 import { useEffect, useState } from 'react';
 
+import Profile from './Profile.tsx'; 
+
 const Profiles = () => {
 
     const [Team, setTeam] = useState(Array<object>);
@@ -25,34 +27,24 @@ const Profiles = () => {
     const [customList, setCustomList] = useState(Array<object>);
 
     useEffect(() => {
-        if (Team.length <= 0) {
-            GetData();
-        }
+        if (Team.length <= 0) { GetData(); }
     }, []);
 
     const GetData = async () => {
         await axios.get(baseURL + '/api/testdata/get')
         .then((response) => {   
-            if (response.data.constructor === Object) { 
-                setEntries(Data);
-            }
-            else {
-                setTeam(response.data);
-            }
+            if (response.data.constructor === Object) { setEntries(Data); }
+            else { setTeam(response.data); }
         });   
     }
 
     const setEntries = async (entries: Array<object>) => {
-        console.log("Called Set!");
-
         ClearTable();
         await axios.post(baseURL + '/api/testdata/insertentries', entries);
         GetData();
     }
 
     const ClearTable = async () => {
-        console.log("Called Clear!")
-
         await axios.post(baseURL + '/api/testdata/clear');
         setTeam([]);
         setCustomList([]);
@@ -87,6 +79,17 @@ const Profiles = () => {
             setName(""); setRole(""); setBio("");
         }
         else { return; }
+    }
+
+    const handleDelete = async (id: number) => {
+
+        const data = {
+            Id: id
+        }
+        
+
+        await axios.post(baseURL + '/api/testdata/deleteentry', data);
+        setTeam(Team.filter(person => person.Id !== id));
     }
 
     const handleCustom = async(e) => {
@@ -128,9 +131,7 @@ const Profiles = () => {
 
             <h1 className="profiles-label flex">
                 <div><span>Team </span>Members</div>
-                <div className="icon-wrapper">
-                    <FaRocket className="icon" />
-                </div>
+                <div className="icon-wrapper"> <FaRocket className="icon" /> </div>
             </h1>
 
             {(Team.length > 0 || custom === true) &&
@@ -160,15 +161,16 @@ const Profiles = () => {
 
             {Team.length > 0 ?
                 Team.map(person =>
-                    <div className="profile flex" key={uuid()}>
-                        <img className="profile-img" src={person.ProfileUrl} alt=""/>
+                    <div className="profile flex">
+                        <img className="profile-img" src={person.ProfileUrl} alt="" />
                         <h1 className="profile-name">{person.Name} </h1>
                         <h2 className="profile-role">{person.Role}</h2>
                         <p className="profile-bio">{person.Bio}</p>
+                        <button onClick={() => { handleDelete(person.Id); }}>Delete</button>
                     </div>
                 )
                 :
-                <h1 className="profiles-empty">No containers for member entries for view. Please fill in entries for your team. </h1>
+                <h1 className="profiles-empty">No member containers exist. Please fill in entries of your team.</h1>
             }
 
             {(customList.length > 0 || custom === true) &&

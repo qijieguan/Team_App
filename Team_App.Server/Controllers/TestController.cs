@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Npgsql;
-
+using System;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 //using Newtonsoft.Json;
 
 
@@ -36,39 +37,22 @@ namespace Team_App.Server.Controllers
             {
                 conn.Open();
 
-                if (conn.State == System.Data.ConnectionState.Open)
-                {
-                    Console.WriteLine("Success open postgreSQL connection.");
-                }
-
-                //string sql = "SELECT REPLACE(jsonb_agg(\"Team\"), '\"', '\\\"') FROM \"Team\"";
                 string sql = "SELECT json_agg(\"Team\") FROM \"Team\"";
-                //string sql = "SELECT * FROM \"Team\"";
 
                 using (var command = new NpgsqlCommand(sql, conn))
                 {
                     var reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        //testing basic serialize/deserialize code
-
-                        //List<Person>? people = JsonConvert.DeserializeObject<List<Person>>((string)reader[0]);
-
-
-                        //Original bug --- need deserializing
-                       
-                        //Console.WriteLine(reader[0]);
                         return Ok(reader[0]);
                     }
                 }
 
                 conn.Close();
-                Console.WriteLine("Success close postgreSQL connection.");
             }
             catch (Exception ex)
             {
                 conn.Close();
-                Console.WriteLine("Success close postgreSQL connection.");
                 Console.WriteLine(ex.Message);
             }
             return Ok("Hello World");
@@ -77,17 +61,9 @@ namespace Team_App.Server.Controllers
         [HttpPost] 
         public IActionResult InsertEntries(JsonElement entries)
         {
-            Console.WriteLine("Insert Called!");
-
             try
             {
                 conn.Open();
-
-                if (conn.State == System.Data.ConnectionState.Open)
-                {
-                    Console.WriteLine("Success open postgreSQL connection.");
-                }
-
 
                 string keys = "(\"Id\", \"ProfileUrl\", \"Name\", \"Role\", \"Salary\", \"Bio\")";
                 string values = "(:Id, :ProfileUrl, :Name, :Role, :Salary, :Bio)";
@@ -113,12 +89,10 @@ namespace Team_App.Server.Controllers
                 }
 
                 conn.Close();
-                Console.WriteLine("Success close postgreSQL connection.");
             }
             catch (Exception ex)
             {
                 conn.Close();
-                Console.WriteLine("Success close postgreSQL connection.");
                 Console.WriteLine(ex.Message);
             }
             return Ok("Hello World");
@@ -127,20 +101,11 @@ namespace Team_App.Server.Controllers
         [HttpPost]
         public IActionResult InsertEntry(JsonElement entry)
         {
-            Console.WriteLine("Insert Called!");
-
             Person ? person = JsonSerializer.Deserialize<Person>(entry);
-
-            Console.WriteLine(person);
 
             try
             {
                 conn.Open();
-
-                if (conn.State == System.Data.ConnectionState.Open)
-                {
-                    Console.WriteLine("Success open postgreSQL connection.");
-                }
  
                 string keys = "(\"Id\", \"ProfileUrl\", \"Name\", \"Role\", \"Salary\", \"Bio\")";
                 string values = "(:Id, :ProfileUrl, :Name, :Role, :Salary, :Bio)";
@@ -159,12 +124,39 @@ namespace Team_App.Server.Controllers
                 }
                 
                 conn.Close();
-                Console.WriteLine("Success close postgreSQL connection.");
+              
             }
             catch (Exception ex)
             {
                 conn.Close();
-                Console.WriteLine("Success close postgreSQL connection.");
+                Console.WriteLine(ex.Message);
+            }
+            return Ok("Hello World");
+        }
+
+        [HttpPost]
+        public IActionResult DeleteEntry(JsonElement data)
+        {
+            Console.WriteLine("Delete Called!");
+            Person? person = JsonSerializer.Deserialize<Person>(data);
+
+            try
+            {
+                conn.Open();
+
+                string sql = "DELETE FROM \"Team\" WHERE \"Id\" = " + person.Id;
+
+                using (var command = new NpgsqlCommand(sql, conn))
+                {
+                    command.ExecuteNonQuery();
+                }
+                
+
+                conn.Close();
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
                 Console.WriteLine(ex.Message);
             }
             return Ok("Hello World");
@@ -177,11 +169,6 @@ namespace Team_App.Server.Controllers
             {
                 conn.Open();
 
-                if (conn.State == System.Data.ConnectionState.Open)
-                {
-                    Console.WriteLine("Success open postgreSQL connection.");
-                }
-
                 string sql = "DELETE FROM \"Team\"";
                 using (var command = new NpgsqlCommand(sql, conn))
                 {
@@ -189,12 +176,10 @@ namespace Team_App.Server.Controllers
                 }
 
                 conn.Close();
-                Console.WriteLine("Success close postgreSQL connection.");
             }
             catch (Exception ex)
             {
                 conn.Close();
-                Console.WriteLine("Success close postgreSQL connection.");
                 Console.WriteLine(ex.Message);
             }
             return Ok("Hello World");
