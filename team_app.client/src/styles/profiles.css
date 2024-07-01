@@ -13,18 +13,18 @@
     justify-content: flex-start;
     column-gap: 2vw;
     width: 100%;
-    border-bottom: 2px solid rgb(230, 230, 230);
+    background-color: mediumpurple;
 }
 
 .profiles-action {
-    padding: 0 2vw;
+    padding: 0 1vw;
     justify-content: center;
-    column-gap: 0.75vw;
     row-gap: 1vh;
+    column-gap: 1vw;
     text-transform: uppercase;
-    height: 15vh;
+    height: 10vh;
     color: white;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
 }
 
 .profiles-action:hover {
@@ -32,16 +32,16 @@
     box-shadow: 0 0 5px grey;
 }
 
-.profiles-action .icon {
-    font-size: clamp(1rem, 2vw, 2rem);
+.profiles-action > span {
+    font-size: clamp(0.875rem, 1vw, 1rem);
 }
 
-.profiles-action > span {
-    font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+.profiles-action .icon {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 .profiles-action.load {
-    background-color: deepskyblue;
+    background-color: navy;
 }
 
 .profiles-action.default {
@@ -69,25 +69,25 @@
 .profile-create > input {
     text-indent: 0.5vw;
     font-weight: 700;
-    height: 5vh;
-    color: deepskyblue;
+    height: 4vh;
+    color: mediumpurple;
     border-radius: 0.5rem;
 }
 
 .profile-create > input::placeholder {
     font-weight: 700;
-    color: deepskyblue;
+    color: mediumpurple;
 }
 
 .profile-create > input:focus {
-    outline: 2px solid deepskyblue;
+    outline: 2px solid mediumpurple;
 }
 
 .profile-create button {
-    padding: 1.5vh 2vw;
+    padding: 1vh 2vw;
     text-transform: uppercase;
     color: white;
-    background-color: deepskyblue;
+    background-color: mediumpurple;
     box-shadow: 0 0 1px;
 }
 
@@ -95,14 +95,14 @@
     margin: 5vh auto;
     grid-column: 1 / -1;
     justify-content: flex-start;
-    column-gap: 1.5vw;
+    column-gap: 1vw;
     text-align: left;
-    font-size: clamp(2rem, 4vw, 4rem);
+    font-size: clamp(2rem, 3vw, 3rem);
     width: 80%;
 }
 
 .profiles-label > div > span {
-    color: deepskyblue;
+    color: mediumpurple;
 }
 
 .profiles-label .icon-wrapper {
@@ -110,8 +110,16 @@
 }
 
 .profiles-label .icon {
-    color: deepskyblue;
+    font-size: clamp(1rem, 2.5vw, 2.5rem);
+    color: mediumpurple;
     animation: rotateLoop 2s infinite;
+}
+
+.profiles-wrapper {
+    grid-column: 1 / -1;
+    grid-template-columns: 22% 22% 22% 22%;
+    row-gap: 5vh;
+    width: 100%;
 }
 
 .profiles-empty {
@@ -141,54 +149,10 @@
     border-radius: 0.5rem;
 }
 
-.cancel-list, .submit-list {
+.submit-list {
     color: white;
-    background-color: deepskyblue;
+    background-color: mediumpurple;
 }
 
-.cancel-list { opacity: 0.3; }
+.cancel-list { color: mediumpurple; border: 1px solid; }
 
-.profile {
-    margin: 0 auto;
-    grid-column: -1 / 1;
-    text-align: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid rgb(230, 230, 230);
-    width: 80%;
-}
-
-    .profile:hover {
-        opacity: 0.4;
-    }
-
-        .profile:hover .profile-name {
-            text-decoration: underline;
-        }
-
-.profile-img {
-    height: 5vh;
-    width: 5vh;
-    border-radius: 0.25rem;
-}
-
-.profile-name {
-    text-align: left;
-    font-size: clamp(0.875rem, 1.25vw, 1.25rem);
-    color: deepskyblue;
-    min-width: 15%;
-}
-
-.profile-role {
-    text-align: left;
-    font-size: clamp(1rem, 1.25vw, 1.25rem);
-    color: deepskyblue;
-    opacity: 0.7;
-    min-width: 15%;
-}
-
-.profile-bio {
-    text-align: left;
-    font-size: clamp(0.75rem, 0.875vw, 0.875rem);
-    color: grey;
-    width: 55%;
-}

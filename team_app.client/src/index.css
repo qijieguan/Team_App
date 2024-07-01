@@ -35,4 +35,13 @@ input:focus {
     outline: 0;
 }
 
+textarea { 
+    border: 0;
+    resize: none;
+}
+
+textarea:focus {
+    outline: 0;
+}
+
 

@@ -1,18 +1,14 @@
 .profile {
-    margin: 0 auto;
-    grid-column: -1 / 1;
+    padding: 1vh 1vw;
+    flex-direction: column;
+    align-items: flex-start;
     text-align: center;
-    justify-content: flex-start;
-    border-bottom: 1px solid rgb(230, 230, 230);
-    width: 80%;
+    width: 100%;
 }
 
-.profile:hover {
-    opacity: 0.4;
-}
-
-.profile:hover .profile-name {
-    text-decoration: underline;
+.profile.editing {
+    box-shadow: 0 0 10px grey;
+    border-radius: 0.5rem;
 }
 
 .profile-img {
@@ -24,21 +20,61 @@
 .profile-name {
     text-align: left;
     font-size: clamp(0.875rem, 1.25vw, 1.25rem);
-    color: deepskyblue;
-    min-width: 15%;
+    color: mediumpurple;
 }
 
 .profile-role {
+    margin: 0.5vh 0 0;
     text-align: left;
-    font-size: clamp(1rem, 1.25vw, 1.25rem);
-    color: deepskyblue;
-    opacity: 0.7;
-    min-width: 15%;
+    font-size: clamp(0.75rem, 1vw, 1rem);
+    color: mediumpurple;
 }
 
 .profile-bio {
     text-align: left;
     font-size: clamp(0.75rem, 0.875vw, 0.875rem);
     color: grey;
-    width: 55%;
+    width: 100%;
+}
+
+.profile-buttons { margin: 2vh 0 0 0; width: 100%; }
+
+.profile-buttons button {
+    padding: 0.5vh 0.5vw;
+    font-size: clamp(0.75rem, 0.875vw, 0.875rem);
+    font-weight: 100;
+}
+
+.profile-edit {
+    color: white;
+    background-color: mediumpurple;
+}
+
+.profile-cancel {
+    color: purple;
+    border: 1px solid;
+}
+
+.profile-delete {
+    color: brown;
+    background-color: transparent;
+    border: 1px solid;
+}
+
+.profile input, .profile textarea {
+    padding: 0.5vh 0;
+    background-color: transparent;
+}
+
+.profile textarea {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.profile.editing textarea {
+    overflow: auto;
+}
+
+.profile input:focus, .profile textarea:focus {
+    background-color: white;
 }

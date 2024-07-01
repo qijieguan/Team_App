@@ -9,8 +9,7 @@ using System.Text.Json.Nodes;
 
 namespace Team_App.Server.Controllers
 {
-    
-    public class Person
+   public class Person
     {
         public int? Id { get; set; }
         public string? ProfileUrl { get; set; }
@@ -20,7 +19,6 @@ namespace Team_App.Server.Controllers
         public string? Bio { get; set; }
     }
     
-
 
     [ApiController]
     [Route("api/[controller]/[action]")]
@@ -37,7 +35,7 @@ namespace Team_App.Server.Controllers
             {
                 conn.Open();
 
-                string sql = "SELECT json_agg(\"Team\") FROM \"Team\"";
+                string sql = "SELECT json_agg(\"Team\" ORDER BY \"Name\" ASC) FROM \"Team\"";
 
                 using (var command = new NpgsqlCommand(sql, conn))
                 {
@@ -125,6 +123,43 @@ namespace Team_App.Server.Controllers
                 
                 conn.Close();
               
+            }
+            catch (Exception ex)
+            {
+                conn.Close();
+                Console.WriteLine(ex.Message);
+            }
+            return Ok("Hello World");
+        }
+
+        [HttpPost]
+        public IActionResult UpdateEntry(JsonElement data)
+        {
+            Console.WriteLine("Update Called!");
+            Person? person = JsonSerializer.Deserialize<Person>(data);
+
+            Console.WriteLine(person);
+
+            try
+            {
+                conn.Open();
+
+                string values = "\"Name\" = :Name, \"Role\" = :Role, \"Bio\" = :Bio";
+                string sql = "UPDATE \"Team\" SET " + values + " WHERE \"Id\" = :Id";
+
+                Console.WriteLine(sql);
+
+                using (var command = new NpgsqlCommand(sql, conn))
+                {
+                    command.Parameters.AddWithValue("Id", person.Id);
+                    command.Parameters.AddWithValue("Name", person.Name);
+                    command.Parameters.AddWithValue("Role", person.Role);
+                    command.Parameters.AddWithValue("Bio", person.Bio);
+                    command.ExecuteNonQuery();
+                }
+                
+
+                conn.Close();
             }
             catch (Exception ex)
             {

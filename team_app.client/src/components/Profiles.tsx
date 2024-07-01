@@ -44,12 +44,6 @@ const Profiles = () => {
         GetData();
     }
 
-    const ClearTable = async () => {
-        await axios.post(baseURL + '/api/testdata/clear');
-        setTeam([]);
-        setCustomList([]);
-    }
-
     const handleChange = (e) => {
         if (e.target.className === 'name-input') { setName(e.target.value); }
         if (e.target.className === 'role-input') { setRole(e.target.value); }
@@ -81,50 +75,75 @@ const Profiles = () => {
         else { return; }
     }
 
-    const handleDelete = async (id: number) => {
 
-        const data = {
-            Id: id
+    const clearCustom = () => {
+        setCustom(false);
+        if (setCustomList.length > 0) { setTeam([]); }
+        setCustomList([]);
+    }
+
+    const handleCustom = async (e) => {
+        e.preventDefault();
+
+        if (customList.length > 0) {
+            ClearTable();
+            setEntries(customList);
+            setTeam(customList);
+            clearCustom();
         }
-        
+        else { return; }
+    }
 
+    const handleEdit = async (edits: object) => {
+        const result = Team.map(person => {
+            if (person.Id === edits.editId) {
+                person.Name = edits.editName;
+                person.Role = edits.editRole;
+                person.Bio = edits.editBio;
+            }
+            return person;
+        });
+
+        setTeam(result);
+
+        const data = { Id: edits.editId, Name: edits.editName, Role: edits.editRole, Bio: edits.editBio }
+        await axios.post(baseURL + '/api/testdata/updateentry', data);
+    }
+
+    const handleDelete = async (id: number) => {
+        const data = { Id: id }
+        
         await axios.post(baseURL + '/api/testdata/deleteentry', data);
         setTeam(Team.filter(person => person.Id !== id));
     }
 
-    const handleCustom = async(e) => {
-        e.preventDefault();
-
-        if (customList.length > 0) {
-            setCustom(false);
-            ClearTable();
-            setEntries(customList);
-            setTeam(customList);
-            setCustomList([]);
-        }
-        else { return; }
+    const ClearTable = async () => {
+        await axios.post(baseURL + '/api/testdata/clear');
+        setTeam([]);
+        setCustomList([]);
     }
 
     return (
         <section className="profiles-section grid">
 
             <div className="profiles-actions grid">
-                <button className="profiles-action load flex" onClick={() => { GetData(); setCustom(false); }}>
-                    <span>Get Existing Data</span>
+                <button className="profiles-action load flex" onClick={() => { GetData(); clearCustom(); }}>
+                    <span>Existing Data</span>
                     <div className="icon-wrapper">  <FaDatabase className="icon" /> </div>
-                </button>
-                <button className="profiles-action default flex" onClick={() => { setEntries(Data); setCustom(false) }}>
-                    <span>Reset to Default</span>
-                    <div className="icon-wrapper">  <GrPowerReset className="icon" /> </div>
                 </button>
 
                 <button className="profiles-action custom flex" onClick={() => { setCustom(true); setTeam([]); }}>
-                    <span>Custom New List</span>
+                    <span>Customize List</span>
                     <div className="icon-wrapper">  <FaWrench className="icon" /> </div>
                 </button>
 
-                <button className="profiles-action clear flex" onClick={() => { ClearTable(); setCustom(false) }}>
-                    <span>Clear Table</span>
+                <button className="profiles-action default flex" onClick={() => { setEntries(Data); clearCustom(); }}>
+                    <span>Default Template</span>
+                    <div className="icon-wrapper">  <GrPowerReset className="icon" /> </div>
+                </button>
+
+                <button className="profiles-action clear flex" onClick={() => { ClearTable(); clearCustom(); }}>
+                    <span>Clear List</span>
                     <div className="icon-wrapper">  <BsTrash3Fill className="icon" /> </div>
                 </button>
             </div>
@@ -159,23 +178,19 @@ const Profiles = () => {
                 </div>
             }
 
-            {Team.length > 0 ?
-                Team.map(person =>
-                    <div className="profile flex">
-                        <img className="profile-img" src={person.ProfileUrl} alt="" />
-                        <h1 className="profile-name">{person.Name} </h1>
-                        <h2 className="profile-role">{person.Role}</h2>
-                        <p className="profile-bio">{person.Bio}</p>
-                        <button onClick={() => { handleDelete(person.Id); }}>Delete</button>
-                    </div>
-                )
-                :
-                <h1 className="profiles-empty">No member containers exist. Please fill in entries of your team.</h1>
-            }
+            <div className="profiles-wrapper grid">
+                {Team.length > 0 ?
+                    Team.map(person =>
+                        <Profile key={uuid()} person={person} handleEdit={handleEdit} handleDelete={handleDelete} />
+                    )
+                    :
+                    <h1 className="profiles-empty">No member containers exist. Please fill in entries of your team.</h1>
+                }
+            </div>
 
             {(customList.length > 0 || custom === true) &&
                 <div className="list-actions flex">
-                    <button className="cancel-list" onClick={() => { setCustomList([]); setCustom(false); }}>
+                    <button className="cancel-list" onClick={() => { clearCustom(); }}>
                         Cancel
                     </button>
                     <button className="submit-list" onClick={(e) => { handleCustom(e); }}>
