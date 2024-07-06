@@ -1,0 +1,10 @@
+.task-board {
+    grid-template-columns: 30% 30% 30%;
+    row-gap: 3vh;
+    column-gap: 2vw;
+    min-height: 90vh;
+}
+
+.task-board-label {
+    grid-column: -1 / 1;
+}

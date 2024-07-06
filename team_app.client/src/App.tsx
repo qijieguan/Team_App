@@ -4,8 +4,7 @@ import './App.css';
 import Header from './components/Header.tsx';
 import Home from './components/Home.tsx';
 import Profiles from './components/Profiles.tsx';
-import Board from './components/Updates.tsx';
-import Updates from './components/Updates.tsx';
+import TaskBoard from './components/TaskBoard.tsx';
 import Footer from './components/Footer.tsx';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -78,8 +77,7 @@ function App() {
                     <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/Team_Profiles" element={<Profiles />} />
-                        <Route path="/Task_Board" element={<Board />} />
-                        <Route path="/Team_Updates" element={<Updates />} />
+                        <Route path="/Task_Board" element={<TaskBoard />} />
                     </Routes>
                 </Provider>
                 <Footer />

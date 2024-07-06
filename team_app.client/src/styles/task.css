@@ -1,0 +1,41 @@
+.task {
+    padding: 0.5vw 1vw;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 3px 3px rgb(200, 200, 200);
+    border-radius: 0.25rem;
+}
+
+.task-description {
+    margin: 2vh 0;
+    font-weight: 300;
+    color: grey;
+}
+
+.task-progress {
+    justify-content: space-between;
+    width: 100%;
+}
+
+.task-assign {
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: 0.5vh;
+}
+
+.task-person {
+    padding: 0.25vh 0.5vw;
+    color: mediumpurple;
+    border: 1px solid;
+    border-radius: 0.5rem;
+}
+
+.task-status {
+    justify-content: center;
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    text-align: center;
+    height: 6rem;
+    width: 6rem;
+    border: 3px solid;
+    border-radius: 10rem;
+}

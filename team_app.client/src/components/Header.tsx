@@ -29,11 +29,7 @@ const Header = () => {
                     </Link>
 
                     <Link to='/Task_Board'>
-                        <button className="header-li" onClick={(e) => { toggleHighlight(e) }}>Board</button>
-                    </Link>
-
-                    <Link to='/Team_Updates'>
-                        <button className="header-li" onClick={(e) => { toggleHighlight(e) }}>Updates</button>
+                        <button className="header-li" onClick={(e) => { toggleHighlight(e) }}>Tasks</button>
                     </Link>
                 </div>
             </h1>
