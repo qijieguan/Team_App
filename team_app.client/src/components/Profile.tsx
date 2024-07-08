@@ -56,7 +56,7 @@ const Profile = ({ person, handleEdit, handleDelete }) => {
         }
     }
 
-    const handleAfterEdit = () => {
+    const handleSubmitEdit = () => {
         const edits = {
             editId: person.Id,
             editName: name,
@@ -86,7 +86,7 @@ const Profile = ({ person, handleEdit, handleDelete }) => {
                 {isEditing === false ?
                     <button className="profile-edit" onClick={(e) => { handleOnEdit(e) }}>Edit</button>
                     :
-                    <button className="profile-edit" onClick={(e) => { handleOffEdit(e); handleAfterEdit(e) }}>Done</button>
+                    <button className="profile-edit" onClick={(e) => { handleOffEdit(e); handleSubmitEdit(); }}>Done</button>
                 }
                 {isEditing === false ?
                     <button className="profile-delete" onClick={() => { return handleDelete(person.Id); }}>Delete</button>

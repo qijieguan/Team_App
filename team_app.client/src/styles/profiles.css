@@ -13,7 +13,7 @@
     justify-content: flex-start;
     column-gap: 2vw;
     width: 100%;
-    background-color: mediumpurple;
+    background-color: black;
 }
 
 .profiles-action {
@@ -41,20 +41,22 @@
 }
 
 .profiles-action.load {
-    background-color: navy;
-}
-
-.profiles-action.default {
     background-color: orange;
 }
 
+
 .profiles-action.custom {
-    background-color: tomato;
+    background-color:aqua;
+}
+
+
+.profiles-action.default {
+    background-color: aquamarine;
 }
 
 .profiles-action.clear {
     color: white;
-    background-color: green;
+    background-color: lightgreen;
 }
 
 .profile-create {
@@ -70,24 +72,22 @@
     text-indent: 0.5vw;
     font-weight: 700;
     height: 4vh;
-    color: mediumpurple;
     border-radius: 0.5rem;
 }
 
 .profile-create > input::placeholder {
     font-weight: 700;
-    color: mediumpurple;
 }
 
 .profile-create > input:focus {
-    outline: 2px solid mediumpurple;
+    outline: 2px solid;
 }
 
 .profile-create button {
     padding: 1vh 2vw;
     text-transform: uppercase;
     color: white;
-    background-color: mediumpurple;
+    background-color: black;
     box-shadow: 0 0 1px;
 }
 
@@ -102,7 +102,7 @@
 }
 
 .profiles-label > div > span {
-    color: mediumpurple;
+    color: tomato;
 }
 
 .profiles-label .icon-wrapper {
@@ -111,7 +111,7 @@
 
 .profiles-label .icon {
     font-size: clamp(1rem, 2.5vw, 2.5rem);
-    color: mediumpurple;
+    color: tomato;
     animation: rotateLoop 2s infinite;
 }
 
@@ -151,8 +151,8 @@
 
 .submit-list {
     color: white;
-    background-color: mediumpurple;
+    background-color: tomato;
 }
 
-.cancel-list { color: mediumpurple; border: 1px solid; }
+.cancel-list { color: tomato; border: 1px solid; }
 

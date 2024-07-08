@@ -8,7 +8,7 @@
   },
   {
     "Id": 2,
-    "Title": "Fix breaking bug on brain chip",
+    "Title": "Fix fatal bug on brain chip",
     "Description": "Um Sir. The human subjects... um... lost their mind after being chipped.",
     "Assign": ["Bill Bezo", "Jeff Gates", "Kanye South"],
     "Status": 75

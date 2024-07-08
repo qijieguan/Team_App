@@ -1,14 +1,13 @@
 .header {
-    padding: 1vh 2vw;
+    padding: 0 2vw;
     justify-content: space-between;
     width: 100%;
-    color: grey;
     background-color: rgb(240,240, 240);
     z-index: 3;
 }
 
 .header-top {
-    margin: 0;
+    margin: 1vh 0;
     align-items: flex-start;
     flex-direction: column;
 }
@@ -27,7 +26,7 @@
 .header-li:hover { opacity: 0.4; }
 
 .header-li.active {
-    border-bottom: 3px solid;
+    color: black;
 }
 
 .header-icon {

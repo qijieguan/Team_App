@@ -5,7 +5,7 @@
     height: 80vh;
     width: 100%;
     color: white;
-    background-color: mediumpurple;
+    background-color: black;
 }
 
 .intro-section .animate.intersected {
@@ -72,7 +72,7 @@
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
     width: 100%;
     color: white;
-    background-color: mediumpurple;
+    background-color: black;
     box-shadow: 0 2px 1px black;
     border-radius: 1rem;
 }
@@ -91,7 +91,6 @@
     grid-column: 1 / -1;
     text-transform: uppercase;
     text-align: center;
-    color: mediumpurple;
 }
 
 .feature-li {
@@ -103,7 +102,6 @@
 
 .feature-li h1 {
     font-size: clamp(1.5rem, 2vw, 2rem);
-    color: mediumpurple;
     opacity: 0.7;
 }
 

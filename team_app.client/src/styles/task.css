@@ -1,18 +1,46 @@
 .task {
-    padding: 0.5vw 1vw;
+    padding: 1vh 1vw 2vh 1vw;
     flex-direction: column;
     align-items: flex-start;
     box-shadow: 0 3px 3px rgb(200, 200, 200);
     border-radius: 0.25rem;
+    width: 100%;
+}
+
+.task.editing {
+    box-shadow: 0 0 10px rgb(200, 200, 200);
+}
+
+.task-header {
+    grid-template-columns: 85% 12.5%;
+    width: 100%;
+}
+
+.task-title {
+    font-size: clamp(1rem, 1.5vw, 1.5rem);
+    font-weight: 700;
+    width: 100%;
+}
+
+.edit-btn {
+    padding: 0 0.5vw;
+    font-size: clamp(0.75rem, 1vw, 1rem);
+    color: white;
+    background-color: tomato;
 }
 
 .task-description {
     margin: 2vh 0;
+    padding-bottom: 2vh;
     font-weight: 300;
+    font-size: clamp(0.75rem, 0.875vw, 0.875rem);
     color: grey;
+    width: 100%;
+    border-bottom: 1px solid rgb(220, 220, 220);
 }
 
 .task-progress {
+    align-items: flex-start;
     justify-content: space-between;
     width: 100%;
 }
@@ -21,21 +49,66 @@
     flex-direction: column;
     align-items: flex-start;
     row-gap: 0.5vh;
+    color: grey;
 }
 
 .task-person {
-    padding: 0.25vh 0.5vw;
-    color: mediumpurple;
-    border: 1px solid;
-    border-radius: 0.5rem;
+    padding: 0.5vh 0.5vw;
+    font-size: clamp(0.75rem, 0.875vw, 0.875rem);
+    color: grey;
+    box-shadow: 0 1px 3px rgb(200, 200, 200);
+    border-radius: 0.25rem;
+}
+
+.task-status-wrapper {
+    justify-content: center;
+    column-gap: 0;
+    height: 5rem;
+    width: 5rem;
+    border: 2px solid;
+    border-radius: 1rem;
+}
+
+.task-status-wrapper span {
+    font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+    font-weight: 700;
 }
 
 .task-status {
-    justify-content: center;
-    font-size: clamp(1rem, 1.5vw, 1.5rem);
-    text-align: center;
-    height: 6rem;
-    width: 6rem;
-    border: 3px solid;
-    border-radius: 10rem;
+    margin: 0.5vh 0 0 0;
+    font-size: clamp(0.875rem, 1.5vw, 1.5rem);
+    font-weight: 700;
+    outline: 0px solid transparent;
+}
+
+.task.editing .edit-btn, .task:not(.editing) .icon-wrapper, .task:not(.editing) .submit-edit-btn {
+    display: none;
+}
+
+.task:not(.editing) input, .task:not(.editing) textarea {
+    background-color: white;
+}
+
+.task.editing input, .task.editing textarea, .task.editing .task-status-wrapper {
+    background-color: rgb(247, 247, 247);
+}
+
+.task-assign .icon {
+    color: rgb(220, 220, 220);
+}
+
+.submit-edit-btn {
+    margin: 2.5vh 0 0 0;
+    padding: 1vh 1vw;
+    color: tomato;
+    background-color: transparent;
+    border: 1px solid;
+    border-radius;
+}
+
+@media (max-width: 75rem) {
+    .task-status-wrapper {
+        height: 4rem;
+        width: 4rem;
+    }
 }

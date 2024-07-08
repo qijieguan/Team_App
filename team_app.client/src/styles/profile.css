@@ -20,14 +20,12 @@
 .profile-name {
     text-align: left;
     font-size: clamp(0.875rem, 1.25vw, 1.25rem);
-    color: mediumpurple;
 }
 
 .profile-role {
     margin: 0.5vh 0 0;
     text-align: left;
     font-size: clamp(0.75rem, 1vw, 1rem);
-    color: mediumpurple;
 }
 
 .profile-bio {
@@ -47,7 +45,7 @@
 
 .profile-edit {
     color: white;
-    background-color: mediumpurple;
+    background-color: tomato;
 }
 
 .profile-cancel {
