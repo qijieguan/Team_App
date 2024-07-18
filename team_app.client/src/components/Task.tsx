@@ -11,7 +11,7 @@ const Task = ({ task, taskId }) => {
     const [description, setDescription] = useState(task.Description);
     const [assign, setAssign] = useState(task.Assign);
     const [status, setStatus] = useState(task.Status);
-    const [lockKey, setLockKey] = useState(true);
+    const [lock, setLock] = useState(true);
 
     useEffect(() => {
         adjustInpWidth();
@@ -78,12 +78,12 @@ const Task = ({ task, taskId }) => {
 
     const handleOnEdit = () => {
         document.querySelector('.task.editing')?.classList.remove('editing');
-        setLockKey(false);
+        setLock(false);
     }
 
     const handleOffEdit = () => {
         document.getElementById(taskId)?.classList.remove('editing');
-        setLockKey(true);
+        setLock(true);
     }
 
     const handleChange = (e) => {
@@ -103,14 +103,14 @@ const Task = ({ task, taskId }) => {
     }
 
     return (
-        <div className={!lockKey ? "task flex editing" : "task flex"} id={taskId}>
+        <div className={!lock ? "task flex editing" : "task flex"} id={taskId}>
             <div className="task-header grid">
                 <input className="task-title"
                     name="title"
                     onChange={(e) => { handleChange(e) }}
                     placeholder="Enter title"
                     value={title}
-                    disabled={lockKey}
+                    disabled={lock}
                 />
                 <button className="edit-btn" onClick={() => { handleOnEdit(); }}>Edit</button>
                 
@@ -120,7 +120,7 @@ const Task = ({ task, taskId }) => {
                 onChange={(e) => { handleChange(e) }}
                 placeholder="Enter description"
                 value={description}
-                disabled={lockKey}
+                disabled={lock}
             />
             <div className="task-progress flex">
                 <div className="task-assign flex">
@@ -129,7 +129,7 @@ const Task = ({ task, taskId }) => {
                             <div className="task-person-wrapper flex" key={uuid()}>
                                 <input className="task-person" 
                                     defaultValue={person}
-                                    disabled={lockKey}
+                                    disabled={lock}
                                 />
                                 <div className="icon-wrapper" onClick={() => { handleDelete(index); }}><FaMinusCircle className="icon" /></div>
                             </div>
@@ -142,7 +142,7 @@ const Task = ({ task, taskId }) => {
                         style={{ boxSizing: 'content-box' }}
                         onChange={(e) => { handleChange(e); }}
                         value={status}
-                        disabled={lockKey}
+                        disabled={lock}
                     />
                     <span>%</span>
                 </div>

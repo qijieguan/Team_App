@@ -69,10 +69,7 @@
     overflow: hidden;
 }
 
-.profile.editing textarea {
+.profile.editing input, .profile.editing textarea {
     overflow: auto;
-}
-
-.profile input:focus, .profile textarea:focus {
     background-color: white;
 }

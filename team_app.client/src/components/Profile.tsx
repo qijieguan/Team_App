@@ -7,8 +7,8 @@ const Profile = ({ person, handleEdit, handleDelete }) => {
     const [name, setName] = useState(person.Name);
     const [role, setRole] = useState(person.Role);
     const [bio, setBio] = useState(person.Bio);
+    const [lock, setLock] = useState(true);
 
-    const [isEditing, setEditing] = useState(false);
 
     useEffect(() => {
         document.addEventListener('click', (e) => { outsideClick(e); }); 
@@ -19,7 +19,7 @@ const Profile = ({ person, handleEdit, handleDelete }) => {
 
         if (!currProfile?.contains(e.target as Node)) {
             resetDefault();
-            setEditing(false);
+            handleOffEdit();
             document.removeEventListener('click', (e) => { outsideClick(e); })
         }
     }
@@ -30,30 +30,14 @@ const Profile = ({ person, handleEdit, handleDelete }) => {
         else { setBio(e.target.value); }
     }
 
-    const handleOnEdit = (e) => {
-        const profile = document.getElementById(person.Id);
+    const handleOnEdit = () => {
         document.querySelector('.profile.editing')?.classList.remove('editing');
-        
-        setEditing(true);
-
-        if (profile) {
-            profile.getElementsByClassName('profile-name')[0].disabled = false;
-            profile.getElementsByClassName('profile-role')[0].disabled = false;
-            profile.getElementsByClassName('profile-bio')[0].disabled = false;
-        }
+        setLock(false);
     }
 
-    const handleOffEdit = (e) => {
-
-        const profile = document.getElementById(person.Id);
-
-        setEditing(false);
-
-        if (profile) {
-            profile.getElementsByClassName('profile-name')[0].disabled = true;
-            profile.getElementsByClassName('profile-role')[0].disabled = true;
-            profile.getElementsByClassName('profile-bio')[0].disabled = true;
-        }
+    const handleOffEdit = () => {
+        document.getElementById(person.id)?.classList.remove('editing');
+        setLock(true);
     }
 
     const handleSubmitEdit = () => {
@@ -74,24 +58,24 @@ const Profile = ({ person, handleEdit, handleDelete }) => {
     }
 
     return (
-        <div className={isEditing ? "profile flex editing" : "profile flex"} id={person.Id}>
+        <div className={!lock ? "profile flex editing" : "profile flex"} id={person.Id}>
             <div className="profile-header flex">
                 <img className="profile-img" src={person.ProfileUrl} alt="" />
-                <input className="profile-name" name="name" value={name} onChange={(e) => { handleChange(e) }} disabled />
+                <input className="profile-name" name="name" value={name} onChange={(e) => { handleChange(e) }} disabled={lock} />
             </div>
     
-            <input className="profile-role" name="role" value={role} onChange={(e) => { handleChange(e) }} disabled />
-            <textarea className="profile-bio" name="bio" value={bio} onChange={(e) => { handleChange(e) }} disabled />
+            <input className="profile-role" name="role" value={role} onChange={(e) => { handleChange(e) }} disabled={lock} />
+            <textarea className="profile-bio" name="bio" value={bio} onChange={(e) => { handleChange(e) }} disabled={lock}/>
             <div className="profile-buttons flex">
-                {isEditing === false ?
-                    <button className="profile-edit" onClick={(e) => { handleOnEdit(e) }}>Edit</button>
+                {!lock === false ?
+                    <button className="profile-edit" onClick={() => { handleOnEdit() }}>Edit</button>
                     :
-                    <button className="profile-edit" onClick={(e) => { handleOffEdit(e); handleSubmitEdit(); }}>Done</button>
+                    <button className="profile-edit" onClick={() => { handleOffEdit(); handleSubmitEdit(); }}>Done</button>
                 }
-                {isEditing === false ?
+                {!lock === false ?
                     <button className="profile-delete" onClick={() => { return handleDelete(person.Id); }}>Delete</button>
                     :
-                    <button className="profile-cancel" onClick={(e) => { handleOffEdit(e); resetDefault() }}>Cancel</button>
+                    <button className="profile-cancel" onClick={() => { handleOffEdit(); resetDefault() }}>Cancel</button>
                 }
             </div>
         </div>
