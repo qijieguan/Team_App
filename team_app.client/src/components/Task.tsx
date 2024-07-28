@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 import uuid from 'react-uuid';
 
-const Task = ({ task, taskId }) => {
+const Task = ({ task, taskId, handleEdit }) => {
 
     const [title, setTitle] = useState(task.Title);
     const [description, setDescription] = useState(task.Description);
@@ -33,9 +33,9 @@ const Task = ({ task, taskId }) => {
         let color = 'rgb(180, 180, 180)'
 
         if (value <= 15) { color = 'red'; }
-        else if (value <= 35) { color = 'blue'; }
+        else if (value <= 35) { color = 'lightblue'; }
         else if (value <= 65) { color = 'orange'; }
-        else if (value <= 100) { color = 'green'; }
+        else if (value <= 100) { color = 'lightgreen'; }
 
         if (status_wrapper) { status_wrapper.style.color = color; }
         if (status) { status.style.color = color; }
@@ -74,6 +74,8 @@ const Task = ({ task, taskId }) => {
             Assign: list,
             Status: Number(status)
         }
+
+        return handleEdit(edits);
     }
 
     const handleOnEdit = () => {
@@ -149,6 +151,7 @@ const Task = ({ task, taskId }) => {
             </div>
       
             <button className="submit-edit-btn" onClick={(e) => { handleSubmitEdits(e); handleOffEdit(); }}>Make Changes</button>
+            <button className="cancel-edit-btn" onClick={() => { handleOffEdit(); resetDefault(); }}>Cancel</button>
         </div>
     )
 }

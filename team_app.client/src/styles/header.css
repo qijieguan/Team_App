@@ -2,7 +2,7 @@
     padding: 0 2vw;
     justify-content: space-between;
     width: 100%;
-    background-color: rgb(240,240, 240);
+    background-color: rgb(25, 50, 100);
     z-index: 3;
 }
 
@@ -13,6 +13,7 @@
 }
 
 .header-top span {
+    color: gold;
     font-size: clamp(1.5rem, 2vw, 2rem);
 }
 
@@ -26,11 +27,12 @@
 .header-li:hover { opacity: 0.4; }
 
 .header-li.active {
-    color: black;
+    color: gold;
 }
 
 .header-icon {
     flex-direction: column;
+    color: white;
 }
 
 .header-icon .icon {

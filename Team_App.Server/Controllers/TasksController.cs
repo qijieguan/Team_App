@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Npgsql;
 using System;
 using System.Text.Json;
@@ -7,20 +7,19 @@ using System.Text.Json.Nodes;
 
 namespace Team_App.Server.Controllers
 {
-   public class Person
+    public class Task
     {
-        public int? Id { get; set; }
-        public string? ProfileUrl { get; set; }
-        public string? Name { get; set; }
-        public string? Role { get; set; }
-        public int? Salary { get; set; }
-        public string? Bio { get; set; }
+        public string? Id { get; set; }
+        public string? Title { get; set; }
+        public string? Description { get; set; }
+        public string[]? Assign { get; set; }
+        public int? Status { get; set; }
     }
-    
+
 
     [ApiController]
     [Route("api/[controller]/[action]")]
-    public class TestDataController : Controller
+    public class TasksDataController : Controller
     {
         const string connStr = "Host=localhost; Database=postgres; Username=postgres; Password=6969";
         private readonly NpgsqlConnection conn = new(connStr);
@@ -33,7 +32,7 @@ namespace Team_App.Server.Controllers
             {
                 conn.Open();
 
-                string sql = "SELECT json_agg(\"Team\" ORDER BY \"Name\" ASC) FROM \"Team\"";
+                string sql = "SELECT json_agg(\"Tasks\") FROM \"Tasks\"";
 
                 using (var command = new NpgsqlCommand(sql, conn))
                 {
@@ -54,35 +53,34 @@ namespace Team_App.Server.Controllers
             return Ok("Hello World");
         }
 
-        [HttpPost] 
+        [HttpPost]
         public IActionResult InsertEntries(JsonElement entries)
         {
             try
             {
                 conn.Open();
+                
+                string keys = "(\"Id\", \"Title\", \"Description\", \"Assign\", \"Status\")";
+                string values = "(:Id, :Title, :Description, :Assign, :Status)";
+                string sql = "INSERT INTO \"Tasks\"" + keys + " values " + values;
 
-                string keys = "(\"Id\", \"ProfileUrl\", \"Name\", \"Role\", \"Salary\", \"Bio\")";
-                string values = "(:Id, :ProfileUrl, :Name, :Role, :Salary, :Bio)";
-                string sql = "INSERT INTO \"Team\"" + keys + " values " + values;
+                List<Task>? tasks = JsonSerializer.Deserialize<List<Task>>(entries);
 
-                List<Person>? people = JsonSerializer.Deserialize<List<Person>>(entries);
-
-                foreach (var person in people)
+                foreach (var task in tasks)
                 {
                     using (var command = new NpgsqlCommand(sql, conn))
                     {
-                        command.Parameters.AddWithValue("Id", person.Id);
-                        command.Parameters.AddWithValue("ProfileUrl", person.ProfileUrl);
-                        command.Parameters.AddWithValue("Name", person.Name);
-                        command.Parameters.AddWithValue("Role", person.Role);
-                        command.Parameters.AddWithValue("Salary", person.Salary);
-                        command.Parameters.AddWithValue("Bio", person.Bio);
+                        command.Parameters.AddWithValue("Id", task.Id);
+                        command.Parameters.AddWithValue("Title", task.Title);
+                        command.Parameters.AddWithValue("Description", task.Description);
+                        command.Parameters.AddWithValue("Assign", task.Assign);
+                        command.Parameters.AddWithValue("Status", task.Status);
 
                         command.ExecuteNonQuery();
                     }
-                    
-                }
 
+                }
+                
                 conn.Close();
             }
             catch (Exception ex)
@@ -96,28 +94,27 @@ namespace Team_App.Server.Controllers
         [HttpPost]
         public IActionResult InsertEntry(JsonElement entry)
         {
-            Person ? person = JsonSerializer.Deserialize<Person>(entry);
+            Task? task = JsonSerializer.Deserialize<Task>(entry);
 
             try
             {
                 conn.Open();
- 
-                string keys = "(\"Id\", \"ProfileUrl\", \"Name\", \"Role\", \"Salary\", \"Bio\")";
-                string values = "(:Id, :ProfileUrl, :Name, :Role, :Salary, :Bio)";
-                string sql = "INSERT INTO \"Team\"" + keys + " values " + values;
+
+                string keys = "(\"Id\", \"Title\", \"Description\", \"Assign\", \"Status\")";
+                string values = "(:Id, :Title, :Description, :Assign, :Status)";
+                string sql = "INSERT INTO \"Tasks\"" + keys + " values " + values;
 
                 using (var command = new NpgsqlCommand(sql, conn))
                 {
-                    command.Parameters.AddWithValue("Id", person.Id);
-                    command.Parameters.AddWithValue("ProfileUrl", person.ProfileUrl);
-                    command.Parameters.AddWithValue("Name", person.Name);
-                    command.Parameters.AddWithValue("Role", person.Role);
-                    command.Parameters.AddWithValue("Salary", person.Salary);
-                    command.Parameters.AddWithValue("Bio", person.Bio);
+                    command.Parameters.AddWithValue("Id", task.Id);
+                    command.Parameters.AddWithValue("Title", task.Title);
+                    command.Parameters.AddWithValue("Description", task.Description);
+                    command.Parameters.AddWithValue("Assign", task.Assign);
+                    command.Parameters.AddWithValue("Status", task.Status);
 
                     command.ExecuteNonQuery();
                 }
-                
+
                 conn.Close();
             }
             catch (Exception ex)
@@ -131,24 +128,25 @@ namespace Team_App.Server.Controllers
         [HttpPost]
         public IActionResult UpdateEntry(JsonElement data)
         {
-            Person? person = JsonSerializer.Deserialize<Person>(data);
+            Task? task = JsonSerializer.Deserialize<Task>(data);
 
             try
             {
                 conn.Open();
 
-                string values = "\"Name\" = :Name, \"Role\" = :Role, \"Bio\" = :Bio";
+                string values = "\"Title\" = :Title, \"Description\" = :Description, \"Assign\" = :Assign, \"Status\" = :Status";
                 string sql = "UPDATE \"Team\" SET " + values + " WHERE \"Id\" = :Id";
 
                 using (var command = new NpgsqlCommand(sql, conn))
                 {
-                    command.Parameters.AddWithValue("Id", person.Id);
-                    command.Parameters.AddWithValue("Name", person.Name);
-                    command.Parameters.AddWithValue("Role", person.Role);
-                    command.Parameters.AddWithValue("Bio", person.Bio);
+                    command.Parameters.AddWithValue("Id", task.Id);
+                    command.Parameters.AddWithValue("Title", task.Title);
+                    command.Parameters.AddWithValue("Description", task.Description);
+                    command.Parameters.AddWithValue("Assign", task.Assign);
+                    command.Parameters.AddWithValue("Status", task.Status);
                     command.ExecuteNonQuery();
                 }
-                
+
                 conn.Close();
             }
             catch (Exception ex)
@@ -162,19 +160,19 @@ namespace Team_App.Server.Controllers
         [HttpPost]
         public IActionResult DeleteEntry(JsonElement data)
         {
-            Person? person = JsonSerializer.Deserialize<Person>(data);
+            Task? task = JsonSerializer.Deserialize<Task>(data);
 
             try
             {
                 conn.Open();
 
-                string sql = "DELETE FROM \"Team\" WHERE \"Id\" = " + person.Id;
+                string sql = "DELETE FROM \"Tasks\" WHERE \"Id\" = " + task.Id;
 
                 using (var command = new NpgsqlCommand(sql, conn))
                 {
                     command.ExecuteNonQuery();
                 }
-                
+
                 conn.Close();
             }
             catch (Exception ex)
@@ -192,7 +190,7 @@ namespace Team_App.Server.Controllers
             {
                 conn.Open();
 
-                string sql = "DELETE FROM \"Team\"";
+                string sql = "DELETE FROM \"Tasks\"";
                 using (var command = new NpgsqlCommand(sql, conn))
                 {
                     command.ExecuteNonQuery();
@@ -209,6 +207,6 @@ namespace Team_App.Server.Controllers
         }
     }
 }
-internal class Person
+internal class Task
 {
 }

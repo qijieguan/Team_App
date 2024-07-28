@@ -1,14 +1,15 @@
 .task {
-    padding: 1vh 1vw 2vh 1vw;
+    padding: 2vh 1vw 2vh 1vw;
     flex-direction: column;
     align-items: flex-start;
-    box-shadow: 0 3px 3px rgb(200, 200, 200);
-    border-radius: 0.25rem;
+    color: white;
+    background-color: rgb(25, 75, 150);
     width: 100%;
+    border-radius: 1rem;
 }
 
 .task.editing {
-    box-shadow: 0 0 10px rgb(200, 200, 200);
+    border: 3px solid gold;
 }
 
 .task-header {
@@ -20,13 +21,18 @@
     font-size: clamp(1rem, 1.5vw, 1.5rem);
     font-weight: 700;
     width: 100%;
+    color: gold;
 }
 
 .edit-btn {
-    padding: 0 0.5vw;
     font-size: clamp(0.75rem, 1vw, 1rem);
     color: white;
-    background-color: tomato;
+    background-color: transparent;
+}
+
+.task-title, .task-description, .task-person {
+    padding: 0.5vh 0;
+    border-radius: 0.5rem;
 }
 
 .task-description {
@@ -34,9 +40,8 @@
     padding-bottom: 2vh;
     font-weight: 300;
     font-size: clamp(0.75rem, 0.875vw, 0.875rem);
-    color: grey;
+    color: white;
     width: 100%;
-    border-bottom: 1px solid rgb(220, 220, 220);
 }
 
 .task-progress {
@@ -55,8 +60,7 @@
 .task-person {
     padding: 0.5vh 0.5vw;
     font-size: clamp(0.75rem, 0.875vw, 0.875rem);
-    color: grey;
-    box-shadow: 0 1px 3px rgb(200, 200, 200);
+    color: rgb(180, 180, 180);
     border-radius: 0.25rem;
 }
 
@@ -81,29 +85,34 @@
     outline: 0px solid transparent;
 }
 
-.task.editing .edit-btn, .task:not(.editing) .icon-wrapper, .task:not(.editing) .submit-edit-btn {
+.task.editing .edit-btn, .task:not(.editing) .icon-wrapper, .task:not(.editing) .submit-edit-btn, .task:not(.editing) .cancel-edit-btn {
     display: none;
 }
 
 .task:not(.editing) input, .task:not(.editing) textarea {
-    background-color: white;
+    background-color: rgb(25, 75, 150);
 }
 
 .task.editing input, .task.editing textarea, .task.editing .task-status-wrapper {
-    background-color: rgb(247, 247, 247);
+   text-indent: 0.5rem;
+   background-color: rgb(25, 75, 175);
 }
 
 .task-assign .icon {
     color: rgb(220, 220, 220);
 }
 
-.submit-edit-btn {
-    margin: 2.5vh 0 0 0;
+.submit-edit-btn, .cancel-edit-btn {
+    margin: 5vh auto 0 auto;
     padding: 1vh 1vw;
-    color: tomato;
+    min-width: 50%;
+    color: white;
     background-color: transparent;
     border: 1px solid;
-    border-radius;
+}
+
+.cancel-edit-btn {
+    margin: 1.25vh auto 0 auto;
 }
 
 @media (max-width: 75rem) {

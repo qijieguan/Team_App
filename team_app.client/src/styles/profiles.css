@@ -1,19 +1,43 @@
 .profiles-section {
     grid-template-columns: 25% 25% 25% 25%;
-    column-gap: 2vw;
     padding: 0 0 10vh 0;
     min-height: 100vh;
-    background-color: rgb(247, 247, 247);
+    color: white;
+    background-color: rgb(25, 50, 125);
+}
+
+.profiles-label {
+    margin: 2.5vh auto 2vh auto;
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+    column-gap: 1vw;
+    text-align: left;
+    font-size: clamp(2rem, 4vw, 4rem);
+    width: 90%;
+}
+
+.profiles-label > div > span {
+    color: gold;
+}
+
+.profiles-label .icon-wrapper {
+    transform: translateY(10%);
+}
+
+.profiles-label .icon {
+    margin: 0 0 0 0.5vw;
+    font-size: clamp(1rem, 4vw, 4rem);
+    color: gold;
+    animation: rotateLoop 2s infinite;
 }
 
 .profiles-actions {
-    padding: 2.5vh 10%;
+    padding: 2.5vh 5%;
     grid-template-columns: 22% 22% 22% 22%;
     grid-column: 1 / -1;
     justify-content: flex-start;
     column-gap: 2vw;
     width: 100%;
-    background-color: black;
 }
 
 .profiles-action {
@@ -23,8 +47,9 @@
     column-gap: 1vw;
     text-transform: uppercase;
     height: 10vh;
+    background-color: rgb(25, 75, 175);
     color: white;
-    border-radius: 0.75rem;
+    border-radius: 5rem;
 }
 
 .profiles-action:hover {
@@ -40,31 +65,11 @@
     font-size: clamp(1rem, 1.5vw, 1.5rem);
 }
 
-.profiles-action.load {
-    background-color: orange;
-}
-
-
-.profiles-action.custom {
-    background-color:aqua;
-}
-
-
-.profiles-action.default {
-    background-color: aquamarine;
-}
-
-.profiles-action.clear {
-    color: white;
-    background-color: lightgreen;
-}
-
 .profile-create {
-    margin: 0 auto 5vh auto;
-    padding: 1vh 1vw;
+    margin: 2vh auto 0 auto;
     grid-column: 1 / -1;
-    width: 80%;
-    background-color: rgb(240, 240, 240);
+    width: 90%;
+    background-color: rgb(25, 50, 125);
     border-radius: 0.5rem;
 }
 
@@ -73,10 +78,13 @@
     font-weight: 700;
     height: 4vh;
     border-radius: 0.5rem;
+    background-color: rgb(25, 75, 150);
+    color: white;
 }
 
 .profile-create > input::placeholder {
     font-weight: 700;
+    color: white;
 }
 
 .profile-create > input:focus {
@@ -84,42 +92,21 @@
 }
 
 .profile-create button {
-    padding: 1vh 2vw;
+    padding: 1.25vh 2vw 1vh 2vw;
     text-transform: uppercase;
-    color: white;
-    background-color: black;
+    background-color: gold;
     box-shadow: 0 0 1px;
 }
 
-.profiles-label {
-    margin: 5vh auto;
-    grid-column: 1 / -1;
-    justify-content: flex-start;
-    column-gap: 1vw;
-    text-align: left;
-    font-size: clamp(2rem, 3vw, 3rem);
-    width: 80%;
-}
-
-.profiles-label > div > span {
-    color: tomato;
-}
-
-.profiles-label .icon-wrapper {
-    transform: translateY(10%);
-}
-
-.profiles-label .icon {
-    font-size: clamp(1rem, 2.5vw, 2.5rem);
-    color: tomato;
-    animation: rotateLoop 2s infinite;
-}
-
 .profiles-wrapper {
+    margin: 2vh 0 0 0;
+    padding: 4vh 0;
     grid-column: 1 / -1;
-    grid-template-columns: 22% 22% 22% 22%;
+    grid-template-columns: 18% 18% 18% 18% 18%;
+    column-gap: 0;
     row-gap: 5vh;
     width: 100%;
+    background-color: rgb(25, 50, 125);
 }
 
 .profiles-empty {

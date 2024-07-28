@@ -1,4 +1,5 @@
 import '../styles/profile.css';
+import { BsThreeDots, BsThreeDotsVertical } from "react-icons/bs";
 
 import { useState, useEffect } from 'react';
 
@@ -59,27 +60,33 @@ const Profile = ({ person, handleEdit, handleDelete }) => {
 
     return (
         <div className={!lock ? "profile flex editing" : "profile flex"} id={person.Id}>
+
             <div className="profile-header flex">
+                <div className="icon-wrapper flex">
+                    <BsThreeDotsVertical className="icon" />
+                </div>
+
+                <div className="profile-buttons flex">
+                    {!lock === false ?
+                        <button className="profile-edit" onClick={() => { handleOnEdit() }}>Edit Mode</button>
+                        :
+                        <button className="profile-edit" onClick={() => { handleOffEdit(); handleSubmitEdit(); }}>Confirm Edits</button>
+                    }
+                    {!lock === false ?
+                        <button className="profile-delete" onClick={() => { return handleDelete(person.Id); }}>Remove</button>
+                        :
+                        <button className="profile-cancel" onClick={() => { handleOffEdit(); resetDefault() }}>Go Back</button>
+                    }
+                </div>
+
                 <img className="profile-img" src={person.ProfileUrl} alt="" />
-                <input className="profile-name" name="name" value={name} onChange={(e) => { handleChange(e) }} disabled={lock} />
+
             </div>
-    
+            <input className="profile-name" name="name" value={name} onChange={(e) => { handleChange(e) }} disabled={lock} />
             <input className="profile-role" name="role" value={role} onChange={(e) => { handleChange(e) }} disabled={lock} />
             <textarea className="profile-bio" name="bio" value={bio} onChange={(e) => { handleChange(e) }} disabled={lock}/>
-            <div className="profile-buttons flex">
-                {!lock === false ?
-                    <button className="profile-edit" onClick={() => { handleOnEdit() }}>Edit</button>
-                    :
-                    <button className="profile-edit" onClick={() => { handleOffEdit(); handleSubmitEdit(); }}>Done</button>
-                }
-                {!lock === false ?
-                    <button className="profile-delete" onClick={() => { return handleDelete(person.Id); }}>Delete</button>
-                    :
-                    <button className="profile-cancel" onClick={() => { handleOffEdit(); resetDefault() }}>Cancel</button>
-                }
-            </div>
+           
         </div>
     )
 }
-
 export default Profile;

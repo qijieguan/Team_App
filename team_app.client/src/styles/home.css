@@ -5,7 +5,7 @@
     height: 80vh;
     width: 100%;
     color: white;
-    background-color: black;
+    background-color: rgb(25, 50, 125);
 }
 
 .intro-section .animate.intersected {
@@ -46,7 +46,7 @@
     position: relative;
     justify-content: center;
     height: 80vh;
-    background-color: rgb(240,240, 240);
+    background-color: rgb(25, 50, 125);
     overflow: hidden;
 }
 
@@ -72,7 +72,7 @@
     font-size: clamp(1.5rem, 2.5vw, 2.5rem);
     width: 100%;
     color: white;
-    background-color: black;
+    background-color: rgb(25, 50, 125);
     box-shadow: 0 2px 1px black;
     border-radius: 1rem;
 }
@@ -83,29 +83,29 @@
     column-gap: 3vw;
     row-gap: 5vh;
     min-height: 70vh;
-    background: rgb(250, 250, 250);
+    background-color: rgb(25, 50, 125);
 }
 
 .feature-label {
     font-size: clamp(2rem, 3.5vw, 3.5rem);
     grid-column: 1 / -1;
     text-transform: uppercase;
-    text-align: center;
+    color: white;
 }
 
 .feature-li {
     padding: 2vh 2vw;
-    background-color: rgb(240, 240, 240);
+    background-color: rgb(25, 50, 150);
     overflow: hidden;
     border-radius: 0.5rem;
 }
 
 .feature-li h1 {
     font-size: clamp(1.5rem, 2vw, 2rem);
-    opacity: 0.7;
+    color: gold;
 }
 
 .feature-li p {
     font-size: clamp(0.75rem, 1vw, 1rem);
-    color: grey;
+    color: white;
 }

@@ -13,7 +13,8 @@ import Profile from './Profile.tsx';
 
 const Profiles = () => {
 
-    const [Team, setTeam] = useState(Array<object>);
+    //const [Team, setTeam] = useState(Array<object>);
+    const [Team, setTeam] = useState(Data);
     const baseURL = "http://localhost:5074";
 
     const [id, setId] = useState(Math.random());
@@ -27,7 +28,7 @@ const Profiles = () => {
     const [customList, setCustomList] = useState(Array<object>);
 
     useEffect(() => {
-        if (Team.length <= 0) { GetData(); }
+        //if (Team.length <= 0) { GetData(); }
     }, []);
 
     const GetData = async () => {
@@ -126,6 +127,11 @@ const Profiles = () => {
     return (
         <section className="profiles-section grid">
 
+            <h1 className="profiles-label flex">
+                <div><span>Team </span>Members</div>
+                <div className="icon-wrapper"> <FaRocket className="icon" /> </div>
+            </h1>
+
             <div className="profiles-actions grid">
                 <button className="profiles-action load flex" onClick={() => { GetData(); clearCustom(); }}>
                     <span>Existing Data</span>
@@ -147,11 +153,6 @@ const Profiles = () => {
                     <div className="icon-wrapper">  <BsTrash3Fill className="icon" /> </div>
                 </button>
             </div>
-
-            <h1 className="profiles-label flex">
-                <div><span>Team </span>Members</div>
-                <div className="icon-wrapper"> <FaRocket className="icon" /> </div>
-            </h1>
 
             {(Team.length > 0 || custom === true) &&
                 <div className="profile-create flex">

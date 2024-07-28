@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Team_App.Server")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c0532bc6b81126001419743a106f8069f77717d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dd15e3c1ac373c9f35e0ce2c5b30f4d895708c02")]
 [assembly: System.Reflection.AssemblyProductAttribute("Team_App.Server")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Team_App.Server")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

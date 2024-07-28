@@ -18,5 +18,6 @@ namespace Team_App.Server.Data
         }
 
         public DbSet<Member> Team { get; set; }
+        public DbSet<Task> Tasks { get; set; }
     }
 }
